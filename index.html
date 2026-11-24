@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halcer — Intelligence has changed the terms</title>
+    <meta name="description" content="Halcer designs, builds and runs the systems behind AI and GenAI programmes." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!-- Hero: the background video autoplays on load and loops seamlessly. -->
+    <main>
+    <div class="hero-track">
+      <section class="hero" id="hero" aria-label="Introduction">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="./hero-poster.jpg" aria-hidden="true">
+          <source src="./hero-loop.mp4" type="video/mp4" />
+        </video>
+        <div class="hero__shade" aria-hidden="true"></div>
+
+        <!-- Navigation -->
+        <header class="nav">
+          <a class="pill brand reveal" href="#" aria-label="Halcer home" data-magnetic style="--d: 0">
+            <svg class="brand-mark" viewBox="9 15 82 71" fill="currentColor" aria-hidden="true">
+              <path d="M79.1797 85.9258L59.8366 85.9258L59.8366 15.0012L71.7139 15.0012C75.8371 15.0012 79.1797 18.3438 79.1797 22.467L79.1797 85.9258Z" />
+              <path d="M21 15H40.3431V85.9246H28.4658C24.3426 85.9246 21 82.582 21 78.4588V15Z" />
+              <path d="M9.63357 60.7411C8.73137 57.3741 10.7295 53.9132 14.0966 53.011L82.6844 34.6329C86.0514 33.7307 89.5123 35.7289 90.4145 39.0959C91.3167 42.463 89.3186 45.9239 85.9515 46.8261L17.3637 65.2041C13.9967 66.1063 10.5358 64.1081 9.63357 60.7411Z" />
+            </svg>
+            <span>Halcer</span>
+          </a>
+
+          <nav class="nav-links reveal" aria-label="Primary navigation" style="--d: 1">
+            <span class="nav-links__indicator" aria-hidden="true"></span>
+            <a href="#" class="is-active" aria-current="page"><span class="roll"><span data-text="Home">Home</span></span></a>
+            <a href="#"><span class="roll"><span data-text="About">About</span></span></a>
+            <a href="#"><span class="roll"><span data-text="Services">Services</span></span></a>
+            <a href="#"><span class="roll"><span data-text="Insights">Insights</span></span></a>
+            <a href="#"><span class="roll"><span data-text="Careers">Careers</span></span></a>
+          </nav>
+
+          <div class="nav-actions reveal" style="--d: 2">
+            <a class="btn btn--primary btn--light btn--sm" href="#" data-magnetic>
+              <span class="btn__fill" aria-hidden="true"></span>
+              <span class="btn__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 6h16v10H8l-4 3z" /></svg>
+              </span>
+              <span class="roll"><span data-text="Contact us">Contact us</span></span>
+            </a>
+            <button class="menu-button" type="button" aria-label="Open menu" data-magnetic>
+              <span></span><span></span>
+            </button>
+          </div>
+        </header>
+
+        <!-- Primary content -->
+        <section class="hero__content" aria-labelledby="hero-title">
+          <h1 id="hero-title" class="headline">
+            <span class="line"><span style="--d: 0">Intelligence has</span></span>
+            <span class="line"><span style="--d: 1">changed the terms.</span></span>
+            <span class="line"><span style="--d: 2">Build <em>accordingly.</em></span></span>
+          </h1>
+
+          <p class="lede reveal" style="--d: 6">
+            Halcer <strong>designs, builds and runs</strong> the systems behind AI and GenAI
+            programmes: the software, cloud, data and security work that decides whether
+            they <strong>succeed in production.</strong>
+          </p>
+
+          <div class="actions reveal" style="--d: 8">
+            <a class="btn btn--primary btn--light" href="#" data-magnetic>
+              <span class="btn__fill" aria-hidden="true"></span>
+              <span class="btn__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+              </span>
+              <span class="roll"><span data-text="Speak with a specialist">Speak with a specialist</span></span>
+            </a>
+            <a class="btn btn--ghost" href="#" data-magnetic>
+              <span class="btn__fill" aria-hidden="true"></span>
+              <span class="btn__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 5l11 7-11 7z" /></svg>
+              </span>
+              <span class="roll"><span data-text="Explore our services">Explore our services</span></span>
+            </a>
+          </div>
+        </section>
+      </section>
+    </div>
+
+    <!-- Who we are -->
+    <section class="who" id="who" aria-labelledby="who-title">
+      <span class="who__frame who__frame--top" aria-hidden="true"></span>
+      <span class="who__frame who__frame--left" aria-hidden="true"></span>
+      <span class="who__frame who__frame--right" aria-hidden="true"></span>
+      <span class="who__frame who__frame--bottom" aria-hidden="true"></span>
+
+      <div class="who__inner">
+        <h2 class="who__title" id="who-title">
+          <span class="line"><span>Who we</span></span>
+          <span class="line line--last">
+            <span><span class="who__outline">are ?</span></span>
+            <a class="who__arrow" href="#" aria-label="Explore our services" data-magnetic>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 8v9H8" /></svg>
+            </a>
+          </span>
+        </h2>
+
+        <p class="who__tagline">Consulting <span aria-hidden="true">|</span> Engineering <span aria-hidden="true">|</span> Training</p>
+
+        <div class="who__text">
+          <p>
+            We are living in a fundamentally New World &ndash; a world where AI is changing not only
+            the rules of the game, but the game itself in real time.
+          </p>
+          <p>
+            At Halcer, AI is in our DNA. We lead with responsible AI to shape a future grounded in a
+            deep commitment to the human experience, driven by our core values. We collaborate with
+            our clients and across our partner ecosystem to enable bold industry disruptions,
+            accelerate innovation, deliver operational excellence, and secure sustainable competitive
+            advantage. Through our Consulting, Software Engineering, and Training expertise, we help
+            businesses be AI-first and future-ready.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clients: logo wall (official client logos, shown with permission). -->
+    <section class="clients" id="clients" aria-labelledby="clients-title">
+      <h2 class="clients__title" id="clients-title">Trusted by remarkable global brands</h2>
+      <ul class="clients__grid">
+          <li style="--n: 0">
+            <span class="clients__logo" role="img" aria-label="Mapbox" style="--logo: url('./clients/mapbox.svg')"></span>
+          </li>
+          <li style="--n: 1">
+            <span class="clients__logo" role="img" aria-label="Cisco" style="--logo: url('./clients/cisco.svg')"></span>
+          </li>
+          <li style="--n: 2">
+            <span class="clients__logo" role="img" aria-label="Spark New Zealand" style="--logo: url('./clients/spark.svg')"></span>
+          </li>
+          <li style="--n: 3">
+            <span class="clients__logo" role="img" aria-label="TradingView" style="--logo: url('./clients/tradingview.svg')"></span>
+          </li>
+          <li style="--n: 4">
+            <span class="clients__logo" role="img" aria-label="SCA" style="--logo: url('./clients/sca.svg')"></span>
+          </li>
+          <li style="--n: 5">
+            <span class="clients__logo" role="img" aria-label="Punto Pago" style="--logo: url('./clients/puntopago.svg')"></span>
+          </li>
+          <li style="--n: 6">
+            <span class="clients__logo" role="img" aria-label="FlipaClip" style="--logo: url('./clients/flipaclip.svg')"></span>
+          </li>
+          <li style="--n: 7">
+            <span class="clients__logo" role="img" aria-label="Bank al Etihad" style="--logo: url('./clients/bankaletihad.svg')"></span>
+          </li>
+          <li style="--n: 8">
+            <span class="clients__logo" role="img" aria-label="Raiffeisen Bank" style="--logo: url('./clients/raiffeisen.svg')"></span>
+          </li>
+          <li style="--n: 9">
+            <span class="clients__logo" role="img" aria-label="IKEA" style="--logo: url('./clients/ikea.svg')"></span>
+          </li>
+          <li style="--n: 10">
+            <span class="clients__logo" role="img" aria-label="McDonald's" style="--logo: url('./clients/mcdonalds.svg')"></span>
+          </li>
+          <li style="--n: 11">
+            <span class="clients__logo" role="img" aria-label="Housing.com" style="--logo: url('./clients/housing.svg')"></span>
+          </li>
+      </ul>
+    </section>
+
+    <!-- Work / project showcase (bento grid) -->
+    <section class="work" id="work" aria-labelledby="work-title">
+      <h2 class="work__title" id="work-title"><span>Our Projects</span></h2>
+
+      <div class="work__frame">
+        <div class="work__grid">
+          <!-- Mark on its construction grid -->
+          <div class="work__tile work__tile--mark" style="--i: 0">
+            <svg class="work__lines" viewBox="0 0 468 383" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M169.6 0V383M231.9 0V383M294.7 0V383M357 0V383M0 105H468M0 168H468M0 227H468M0 266.6H468M0 334H468M0 290.4L468 164.9" />
+            </svg>
+            <svg class="work__mark work__fade" viewBox="9 15 82 71" fill="currentColor" aria-hidden="true"><path d="M79.1797 85.9258L59.8366 85.9258L59.8366 15.0012L71.7139 15.0012C75.8371 15.0012 79.1797 18.3438 79.1797 22.467L79.1797 85.9258Z" /><path d="M21 15H40.3431V85.9246H28.4658C24.3426 85.9246 21 82.582 21 78.4588V15Z" /><path d="M9.63357 60.7411C8.73137 57.3741 10.7295 53.9132 14.0966 53.011L82.6844 34.6329C86.0514 33.7307 89.5123 35.7289 90.4145 39.0959C91.3167 42.463 89.3186 45.9239 85.9515 46.8261L17.3637 65.2041C13.9967 66.1063 10.5358 64.1081 9.63357 60.7411Z" /></svg>
+          </div>
+
+          <!-- Hero photo with the mark behind the hardware -->
+          <div class="work__tile work__tile--photo" style="--i: 2">
+            <img class="work__fade" src="./proj-photo.jpg" alt="Robotic arm on a production line" width="1429" height="882" loading="lazy" decoding="async" />
+            <img class="work__fade work__photo-mark" src="./proj-photo-mark.jpg" alt="" aria-hidden="true" width="1429" height="882" loading="lazy" decoding="async" />
+          </div>
+
+          <!-- Blue tile with tilted card stack -->
+          <div class="work__tile work__tile--card" style="--i: 1">
+            <img class="work__back" src="./proj-back.jpg" alt="" aria-hidden="true" width="598" height="772" loading="lazy" decoding="async" />
+            <article class="work__card">
+              <div class="work__card-media work__fade">
+                <img src="./proj-card.jpg" alt="Precision machine working on a circuit board" width="746" height="559" loading="lazy" decoding="async" />
+                <span class="work__toggle" aria-hidden="true"><b>Live</b><span>History</span></span>
+              </div>
+              <div class="work__card-body work__fade">
+                <h3>Be AI-First and <em>Future-Ready</em></h3>
+                <p>We collaborate with clients and partners to accelerate innovation and deliver operational excellence.</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Capability list -->
+          <div class="work__tile work__tile--list" style="--i: 3">
+            <ul class="work__list">
+              <li class="is-far" style="--w: 0">Cloud Platforms</li>
+              <li class="is-far" style="--w: 0">AI Strategy</li>
+              <li class="is-near" style="--w: 1">Consulting</li>
+              <li class="is-active" style="--w: 2">Engineering
+                <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M9 22.5h-.5a6 6 0 0 1-.9-11.93A8 8 0 0 1 23.4 9.6 6.5 6.5 0 0 1 24 22.5h-1" /><circle cx="16" cy="21" r="2.6" /><path d="M16 15.6v1.8M16 24.6v1.8M10.6 21h1.8M19.6 21h1.8M12.2 17.2l1.3 1.3M18.5 23.5l1.3 1.3M12.2 24.8l1.3-1.3M18.5 18.5l1.3-1.3" /></svg>
+              </li>
+              <li class="is-near" style="--w: 3">Training</li>
+              <li class="is-far" style="--w: 4">Responsible AI</li>
+              <li class="is-far" style="--w: 4">Data Security</li>
+            </ul>
+          </div>
+
+          <!-- Brand lockup -->
+          <div class="work__tile work__tile--brand" style="--i: 4">
+            <div class="work__brand work__fade">
+              <svg viewBox="9 15 82 71" fill="currentColor" aria-hidden="true"><path d="M79.1797 85.9258L59.8366 85.9258L59.8366 15.0012L71.7139 15.0012C75.8371 15.0012 79.1797 18.3438 79.1797 22.467L79.1797 85.9258Z" /><path d="M21 15H40.3431V85.9246H28.4658C24.3426 85.9246 21 82.582 21 78.4588V15Z" /><path d="M9.63357 60.7411C8.73137 57.3741 10.7295 53.9132 14.0966 53.011L82.6844 34.6329C86.0514 33.7307 89.5123 35.7289 90.4145 39.0959C91.3167 42.463 89.3186 45.9239 85.9515 46.8261L17.3637 65.2041C13.9967 66.1063 10.5358 64.1081 9.63357 60.7411Z" /></svg>
+              <span>Halcer</span>
+            </div>
+          </div>
+
+          <!-- Typeface card stack -->
+          <div class="work__tile work__tile--font" style="--i: 5">
+            <span class="work__band" aria-hidden="true"></span>
+            <div class="work__strip work__fade">
+              <span>FONT</span>
+              <strong><em>Manrope</em></strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials: cards move between a grid and an overlapping stack.
+         PLACEHOLDER CONTENT: the quotes below are drafts and the clients are unnamed.
+         Replace them with real, approved client testimonials before publishing. -->
+    <section class="journey" id="testimonials" aria-labelledby="testimonials-title">
+      <header class="journey__head">
+        <h2 class="journey__title" id="testimonials-title">
+          <span class="line"><span>Trusted by our clients</span></span>
+        </h2>
+      </header>
+
+      <ol class="journey__cards">
+          <li class="jcard jcard--grey">
+            <span class="jcard__quote" aria-hidden="true">&rdquo;</span>
+            <blockquote><p>&ldquo;Halcer helped us agree exactly what the system needed to decide, and what a wrong answer would cost, before any code was written.&rdquo;</p></blockquote>
+            <span class="jcard__rule" aria-hidden="true"></span>
+            <span class="jcard__client"><strong>Client name</strong><small>Role, Company</small></span>
+          </li>
+          <li class="jcard jcard--blue">
+            <span class="jcard__quote" aria-hidden="true">&rdquo;</span>
+            <blockquote><p>&ldquo;The prototype ran on our own records and was judged against a test set we wrote together, so we trusted what we were seeing.&rdquo;</p></blockquote>
+            <span class="jcard__rule" aria-hidden="true"></span>
+            <span class="jcard__client"><strong>Client name</strong><small>Role, Company</small></span>
+          </li>
+          <li class="jcard jcard--grey">
+            <span class="jcard__quote" aria-hidden="true">&rdquo;</span>
+            <blockquote><p>&ldquo;Guardrails, identity, logging and cost controls were built in from the start. It felt like proper software engineering, not an experiment.&rdquo;</p></blockquote>
+            <span class="jcard__rule" aria-hidden="true"></span>
+            <span class="jcard__client"><strong>Client name</strong><small>Role, Company</small></span>
+          </li>
+          <li class="jcard jcard--blue">
+            <span class="jcard__quote" aria-hidden="true">&rdquo;</span>
+            <blockquote><p>&ldquo;Regression suites and a staged rollout with a clear rollback path gave our risk team the confidence to sign off.&rdquo;</p></blockquote>
+            <span class="jcard__rule" aria-hidden="true"></span>
+            <span class="jcard__client"><strong>Client name</strong><small>Role, Company</small></span>
+          </li>
+          <li class="jcard jcard--blue">
+            <span class="jcard__quote" aria-hidden="true">&rdquo;</span>
+            <blockquote><p>&ldquo;Long after launch they still watch quality, drift and spend, and the roadmap follows what our users actually do.&rdquo;</p></blockquote>
+            <span class="jcard__rule" aria-hidden="true"></span>
+            <span class="jcard__client"><strong>Client name</strong><small>Role, Company</small></span>
+          </li>
+      </ol>
+    </section>
+
+    <!-- Why Halcer: intro + five cards (three on top, two wider below) -->
+    <section class="why" id="why" aria-labelledby="why-title">
+      <div class="why__inner">
+        <header class="why__head">
+          <h2 class="why__label" id="why-title">Why Halcer</h2>
+          <p class="why__intro">
+            Halcer is a trusted partner, delivering seamless value across strategy, execution, and
+            ongoing enablement. With deep experience across industries and teams that work across
+            regions, we bring domain knowledge, global best practices, and local insights to every
+            engagement.
+          </p>
+        </header>
+
+        <ul class="why__grid">
+          <li class="why__card why__card--blue" style="--n: 0">
+            <svg class="why__icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2" /><path d="M8 15.5l2.2-7h.6l2.2 7M8.7 13.3h3.6M16 8.5v7" /></svg>
+            <div class="why__body">
+              <strong class="why__big">End-to-end</strong>
+              <span class="why__caption">Trusted partner for the AI era</span>
+            </div>
+          </li>
+          <li class="why__card" style="--n: 1">
+            <svg class="why__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><path d="M3.5 12h17M12 3.5c2.4 2.4 3.6 5.2 3.6 8.5s-1.2 6.1-3.6 8.5c-2.4-2.4-3.6-5.2-3.6-8.5S9.6 5.9 12 3.5z" /></svg>
+            <p class="why__body why__text">Local expertise, with global&nbsp;scale</p>
+          </li>
+          <li class="why__card why__card--blue" style="--n: 2">
+            <svg class="why__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4" /></svg>
+            <div class="why__body">
+              <strong class="why__big">AI-powered</strong>
+              <span class="why__caption">Solutions &amp; accelerators</span>
+            </div>
+          </li>
+          <li class="why__card why__card--wide" style="--n: 3">
+            <svg class="why__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h9.5L19 7v13.5H6z" /><path d="M9 9h7M9 12h7M9 15h3.5M13.5 17.5l1.6 1.6 3.2-3.4" /></svg>
+            <p class="why__body why__text">Knowledge-obsessed digital leaders: innovators, thought leaders and active open-source contributors, driven to be the authority in the markets we&nbsp;serve</p>
+          </li>
+          <li class="why__card why__card--wide" style="--n: 4">
+            <svg class="why__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17l5.5-5.5 3.5 3.5L20 8" /><path d="M14.5 8H20v5.5" /></svg>
+            <p class="why__body why__text">AI-driven solutions and accelerators that help you achieve your business goals faster and more&nbsp;effectively</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Industries: header + six panels that pin and stack while scrolling -->
+    <section class="ind" id="industries" aria-labelledby="ind-title">
+      <header class="ind__head">
+        <div>
+          <p class="ind__eyebrow">Industries</p>
+          <h2 class="ind__title" id="ind-title">Built for the industries <em>that move markets.</em></h2>
+        </div>
+        <p class="ind__intro">Production GenAI, data, and cloud systems tailored to how your industry actually operates&mdash;not generic playbooks.</p>
+      </header>
+
+      <ol class="ind__stack">
+          <li class="ind__card" style="--i: 0">
+            <div class="ind__copy">
+              <span class="ind__num" aria-hidden="true">01</span>
+              <h3 class="ind__name"><span>Banking &amp;</span><span class="ind__muted">Financial Services</span></h3>
+              <a class="ind__link" href="#" aria-label="Explore Banking and Financial Services">
+                <span>Explore</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+              </a>
+            </div>
+            <div class="ind__visual" aria-hidden="true">
+              <svg class="ind__icon" viewBox="0 0 64 64"><path d="M8 26h48M12 26v22M22 26v22M32 26v22M42 26v22M52 26v22M6 52h52M32 8l26 12H6z" /></svg>
+            </div>
+          </li>
+          <li class="ind__card" style="--i: 1">
+            <div class="ind__copy">
+              <span class="ind__num" aria-hidden="true">02</span>
+              <h3 class="ind__name"><span>Insurance</span></h3>
+              <a class="ind__link" href="#" aria-label="Explore Insurance">
+                <span>Explore</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+              </a>
+            </div>
+            <div class="ind__visual" aria-hidden="true">
+              <svg class="ind__icon" viewBox="0 0 64 64"><path d="M32 6l22 8v16c0 14-9.5 24-22 28C19.5 54 10 44 10 30V14z" /><path d="M23 32l6 6 12-13" /></svg>
+            </div>
+          </li>
+          <li class="ind__card" style="--i: 2">
+            <div class="ind__copy">
+              <span class="ind__num" aria-hidden="true">03</span>
+              <h3 class="ind__name"><span>Healthcare</span></h3>
+              <a class="ind__link" href="#" aria-label="Explore Healthcare">
+                <span>Explore</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+              </a>
+            </div>
+            <div class="ind__visual" aria-hidden="true">
+              <svg class="ind__icon" viewBox="0 0 64 64"><path d="M32 54S8 40 8 23a12 12 0 0 1 24-4 12 12 0 0 1 24 4c0 17-24 31-24 31z" /><path d="M14 32h10l4-8 6 16 4-8h12" /></svg>
+            </div>
+          </li>
+          <li class="ind__card" style="--i: 3">
+            <div class="ind__copy">
+              <span class="ind__num" aria-hidden="true">04</span>
+              <h3 class="ind__name"><span>Life</span><span class="ind__muted">Sciences</span></h3>
+              <a class="ind__link" href="#" aria-label="Explore Life Sciences">
+                <span>Explore</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+              </a>
+            </div>
+            <div class="ind__visual" aria-hidden="true">
+              <svg class="ind__icon" viewBox="0 0 64 64"><path d="M26 6v18L10 52a4 4 0 0 0 3.5 6h37a4 4 0 0 0 3.5-6L38 24V6M22 6h20M17 40h30" /></svg>
+            </div>
+          </li>
+          <li class="ind__card" style="--i: 4">
+            <div class="ind__copy">
+              <span class="ind__num" aria-hidden="true">05</span>
+              <h3 class="ind__name"><span>Industrial</span></h3>
+              <a class="ind__link" href="#" aria-label="Explore Industrial">
+                <span>Explore</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+              </a>
+            </div>
+            <div class="ind__visual" aria-hidden="true">
+              <svg class="ind__icon" viewBox="0 0 64 64"><path d="M6 56V30l14 8v-8l14 8v-8l14 8V10h10v46zM14 46h6M26 46h6M38 46h6" /></svg>
+            </div>
+          </li>
+          <li class="ind__card" style="--i: 5">
+            <div class="ind__copy">
+              <span class="ind__num" aria-hidden="true">06</span>
+              <h3 class="ind__name"><span>Software &amp;</span><span class="ind__muted">Hi-Tech</span></h3>
+              <a class="ind__link" href="#" aria-label="Explore Software and Hi-Tech">
+                <span>Explore</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+              </a>
+            </div>
+            <div class="ind__visual" aria-hidden="true">
+              <svg class="ind__icon" viewBox="0 0 64 64"><rect x="6" y="10" width="52" height="38" rx="4" /><path d="M24 22l-7 7 7 7M40 22l7 7-7 7M34 20l-4 18M22 56h20" /></svg>
+            </div>
+          </li>
+      </ol>
+    </section>
+    </main>
+
+    <!-- Footer: CTA band (nested chevrons + glow) and footer bar.
+         PLACEHOLDER: office addresses and the email/phone targets must be replaced
+         with Halcer's real contact details before publishing. -->
+    <footer class="foot" id="contact">
+      <section class="foot__cta" aria-labelledby="foot-title">
+        <svg class="foot__chevrons" viewBox="0 0 2576 758" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+          <defs>
+            <radialGradient id="foot-glow" cx="50%" cy="100%" r="60%">
+              <stop offset="0" stop-color="#1d4f99" stop-opacity="0.75" />
+              <stop offset="0.55" stop-color="#0d2550" stop-opacity="0.45" />
+              <stop offset="1" stop-color="#000" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <rect width="2576" height="758" fill="url(#foot-glow)" />
+          <g class="foot__tris">
+            <polygon points="1287,-296 85,758 2489,758" />
+            <polygon points="1287,-55 360,758 2214,758" />
+            <polygon points="1287,186 635,758 1939,758" />
+            <polygon points="1287,427 910,758 1664,758" />
+            <polygon points="1287,638 1150,758 1424,758" />
+          </g>
+        </svg>
+        <div class="foot__cta-inner">
+          <h2 class="foot__title" id="foot-title">Have a product to<br />build or rethink?</h2>
+          <p class="foot__sub">Tell us where the product is today, what you are trying to achieve and what is getting in the way.</p>
+          <a class="foot__btn" href="#" data-magnetic>
+            <span class="foot__btn-fill" aria-hidden="true"></span>
+            <span class="roll"><span data-text="Get in touch">Get in touch</span></span>
+          </a>
+        </div>
+      </section>
+
+      <div class="foot__bar">
+        <div class="foot__contacts">
+          <div class="foot__contact">
+            <a class="foot__pill" href="#" data-magnetic><span class="roll"><span data-text="Email us">Email us</span></span></a>
+            <p><span class="foot__label">Main office</span> Street address,<br />City, Country</p>
+          </div>
+          <div class="foot__contact">
+            <a class="foot__pill" href="#" data-magnetic><span class="roll"><span data-text="Call us">Call us</span></span></a>
+            <p><span class="foot__label">Second office</span> Street address,<br />City, Country</p>
+          </div>
+        </div>
+
+        <nav class="foot__nav" aria-label="Footer">
+            <a href="#"><span class="roll"><span data-text="Services">Services</span></span></a>
+            <a href="#"><span class="roll"><span data-text="Insights">Insights</span></span></a>
+            <a href="#"><span class="roll"><span data-text="Projects">Projects</span></span></a>
+            <a href="#"><span class="roll"><span data-text="Careers">Careers</span></span></a>
+            <a href="#"><span class="roll"><span data-text="About">About</span></span></a>
+            <a href="#"><span class="roll"><span data-text="Contact">Contact</span></span></a>
+        </nav>
+
+        <div class="foot__legal">
+          <a href="#">Privacy Policy</a>
+          <span>2026, Halcer</span>
+        </div>
+
+        <div class="foot__socials">
+            <a class="foot__social" href="#" aria-label="LinkedIn" data-magnetic><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 9.5v8M6.5 6.5v.01M10.5 17.5v-4.5a2.5 2.5 0 0 1 5 0v4.5M10.5 9.5v8" /></svg></a>
+            <a class="foot__social" href="#" aria-label="GitHub" data-magnetic><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.5-4-2-6-2.5m12 4.5v-3.5a3 3 0 0 0-.9-2.4c3-.3 6-1.4 6-6.4a5 5 0 0 0-1.4-3.5 4.6 4.6 0 0 0-.1-3.5s-1.1-.3-3.6 1.4a12.4 12.4 0 0 0-6.5 0C6 1.9 4.9 2.2 4.9 2.2a4.6 4.6 0 0 0-.1 3.5A5 5 0 0 0 3.4 9.2c0 5 3 6.1 6 6.4a3 3 0 0 0-.9 2.4V21" /></svg></a>
+            <a class="foot__social" href="#" aria-label="YouTube" data-magnetic><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4" /><path d="M10.5 9.5v5l4.5-2.5z" /></svg></a>
+            <a class="foot__social" href="#" aria-label="X" data-magnetic><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" /></svg></a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="cursor" aria-hidden="true"><span class="cursor__text"></span></div>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
