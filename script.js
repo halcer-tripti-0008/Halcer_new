@@ -139,12 +139,16 @@ document.querySelectorAll(".who, .clients, .work, .journey, .why, .ind, .foot").
     section.classList.add("is-inview");
     return;
   }
+  // Tall sections (e.g. the stacked industries panels) can never reach 25% visible,
+  // so the test is "a quarter of the section, or a quarter of the window, is on screen".
+  const thresholds = Array.from({ length: 21 }, (_, i) => i / 20);
   new IntersectionObserver(
     ([entry]) => {
-      if (entry.intersectionRatio >= 0.25) section.classList.add("is-inview");
+      const need = Math.min(entry.boundingClientRect.height * 0.25, innerHeight * 0.25);
+      if (entry.isIntersecting && entry.intersectionRect.height >= need) section.classList.add("is-inview");
       else if (!entry.isIntersecting) section.classList.remove("is-inview");
     },
-    { threshold: [0, 0.25] },
+    { threshold: thresholds },
   ).observe(section);
 });
 

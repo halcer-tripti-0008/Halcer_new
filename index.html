@@ -7,7 +7,7 @@
     <meta name="description" content="Halcer designs, builds and runs the systems behind AI and GenAI programmes." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -175,18 +175,20 @@
 
       <div class="work__frame">
         <div class="work__grid">
-          <!-- Mark on its construction grid -->
+          <!-- Logo glyph on its construction grid (redrawn as SVG) -->
           <div class="work__tile work__tile--mark" style="--i: 0">
-            <svg class="work__lines" viewBox="0 0 468 383" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M169.6 0V383M231.9 0V383M294.7 0V383M357 0V383M0 105H468M0 168H468M0 227H468M0 266.6H468M0 334H468M0 290.4L468 164.9" />
+            <svg class="work__logo work__fade" viewBox="0 0 660 530" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <path class="work__logo-grid" d="M141 0V530M221 0V530M440 0V530M518 0V530M0 74H660M0 153H660M0 295H660M0 376H660M0 455H660M0 130L400 530" />
+              <g class="work__logo-glyph">
+                <path fill-rule="evenodd" d="M221 90Q221 75 236 75H410L495 144Q517 160 517 186V284Q517 296 505 296H453Q441 296 441 308V360Q441 375 426 375H258L154 284Q148 278 148 268V170Q148 153 165 153H206Q221 153 221 138ZM233 155H426Q438 155 438 167V281Q438 293 426 293H233Q221 293 221 281V167Q221 155 233 155Z" />
+                <rect x="441" y="377" width="76" height="76" rx="14" />
+              </g>
             </svg>
-            <svg class="work__mark work__fade" viewBox="9 15 82 71" fill="currentColor" aria-hidden="true"><path d="M79.1797 85.9258L59.8366 85.9258L59.8366 15.0012L71.7139 15.0012C75.8371 15.0012 79.1797 18.3438 79.1797 22.467L79.1797 85.9258Z" /><path d="M21 15H40.3431V85.9246H28.4658C24.3426 85.9246 21 82.582 21 78.4588V15Z" /><path d="M9.63357 60.7411C8.73137 57.3741 10.7295 53.9132 14.0966 53.011L82.6844 34.6329C86.0514 33.7307 89.5123 35.7289 90.4145 39.0959C91.3167 42.463 89.3186 45.9239 85.9515 46.8261L17.3637 65.2041C13.9967 66.1063 10.5358 64.1081 9.63357 60.7411Z" /></svg>
           </div>
 
-          <!-- Hero photo with the mark behind the hardware -->
+          <!-- Hero photo -->
           <div class="work__tile work__tile--photo" style="--i: 2">
             <img class="work__fade" src="./proj-photo.jpg" alt="Robotic arm on a production line" width="1429" height="882" loading="lazy" decoding="async" />
-            <img class="work__fade work__photo-mark" src="./proj-photo-mark.jpg" alt="" aria-hidden="true" width="1429" height="882" loading="lazy" decoding="async" />
           </div>
 
           <!-- Blue tile with tilted card stack -->
@@ -219,12 +221,12 @@
             </ul>
           </div>
 
-          <!-- Brand lockup -->
+          <!-- Tagline -->
           <div class="work__tile work__tile--brand" style="--i: 4">
-            <div class="work__brand work__fade">
-              <svg viewBox="9 15 82 71" fill="currentColor" aria-hidden="true"><path d="M79.1797 85.9258L59.8366 85.9258L59.8366 15.0012L71.7139 15.0012C75.8371 15.0012 79.1797 18.3438 79.1797 22.467L79.1797 85.9258Z" /><path d="M21 15H40.3431V85.9246H28.4658C24.3426 85.9246 21 82.582 21 78.4588V15Z" /><path d="M9.63357 60.7411C8.73137 57.3741 10.7295 53.9132 14.0966 53.011L82.6844 34.6329C86.0514 33.7307 89.5123 35.7289 90.4145 39.0959C91.3167 42.463 89.3186 45.9239 85.9515 46.8261L17.3637 65.2041C13.9967 66.1063 10.5358 64.1081 9.63357 60.7411Z" /></svg>
-              <span>Halcer</span>
-            </div>
+            <p class="work__brand work__fade">
+              <span>AI-first.</span>
+              <span class="work__brand-accent">Future-ready.</span>
+            </p>
           </div>
 
           <!-- Typeface card stack -->
@@ -328,10 +330,11 @@
     </section>
 
     <!-- Industries: header + six panels that pin and stack while scrolling -->
-    <section class="ind" id="industries" aria-labelledby="ind-title">
+    <section class="ind" id="industries" aria-labelledby="ind-heading">
+      <h2 class="ind__heading" id="ind-heading"><span>Industries</span></h2>
+
       <header class="ind__head">
         <div>
-          <p class="ind__eyebrow">Industries</p>
           <h2 class="ind__title" id="ind-title">Built for the industries <em>that move markets.</em></h2>
         </div>
         <p class="ind__intro">Production GenAI, data, and cloud systems tailored to how your industry actually operates&mdash;not generic playbooks.</p>
@@ -342,78 +345,84 @@
             <div class="ind__copy">
               <span class="ind__num" aria-hidden="true">01</span>
               <h3 class="ind__name"><span>Banking &amp;</span><span class="ind__muted">Financial Services</span></h3>
+              <p class="ind__desc">Platforms that carry strict controls: identity, data lineage, resilience and evidence for reviewers.</p>
               <a class="ind__link" href="#" aria-label="Explore Banking and Financial Services">
                 <span>Explore</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
               </a>
             </div>
-            <div class="ind__visual" aria-hidden="true">
-              <svg class="ind__icon" viewBox="0 0 64 64"><path d="M8 26h48M12 26v22M22 26v22M32 26v22M42 26v22M52 26v22M6 52h52M32 8l26 12H6z" /></svg>
+            <div class="ind__visual">
+              <img class="ind__photo" src="./ind-banking.jpg" alt="Advisers reviewing financial analytics with a client" width="735" height="490" loading="lazy" decoding="async" />
             </div>
           </li>
           <li class="ind__card" style="--i: 1">
             <div class="ind__copy">
               <span class="ind__num" aria-hidden="true">02</span>
               <h3 class="ind__name"><span>Insurance</span></h3>
+              <p class="ind__desc">Empowering insurance businesses with intelligent technology to streamline operations, manage risk, and deliver seamless customer experiences.</p>
               <a class="ind__link" href="#" aria-label="Explore Insurance">
                 <span>Explore</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
               </a>
             </div>
-            <div class="ind__visual" aria-hidden="true">
-              <svg class="ind__icon" viewBox="0 0 64 64"><path d="M32 6l22 8v16c0 14-9.5 24-22 28C19.5 54 10 44 10 30V14z" /><path d="M23 32l6 6 12-13" /></svg>
+            <div class="ind__visual">
+              <img class="ind__photo" src="./ind-insurance.jpg" alt="Rain on a clear umbrella" width="1000" height="1000" loading="lazy" decoding="async" />
             </div>
           </li>
           <li class="ind__card" style="--i: 2">
             <div class="ind__copy">
               <span class="ind__num" aria-hidden="true">03</span>
               <h3 class="ind__name"><span>Healthcare</span></h3>
+              <p class="ind__desc">Regulated data, clinical workflows and research platforms where auditability matters as much as speed.</p>
               <a class="ind__link" href="#" aria-label="Explore Healthcare">
                 <span>Explore</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
               </a>
             </div>
-            <div class="ind__visual" aria-hidden="true">
-              <svg class="ind__icon" viewBox="0 0 64 64"><path d="M32 54S8 40 8 23a12 12 0 0 1 24-4 12 12 0 0 1 24 4c0 17-24 31-24 31z" /><path d="M14 32h10l4-8 6 16 4-8h12" /></svg>
+            <div class="ind__visual">
+              <img class="ind__photo" src="./ind-healthcare.jpg" alt="Gloved hand holding a petri dish" width="1000" height="1000" loading="lazy" decoding="async" />
             </div>
           </li>
           <li class="ind__card" style="--i: 3">
             <div class="ind__copy">
               <span class="ind__num" aria-hidden="true">04</span>
               <h3 class="ind__name"><span>Life</span><span class="ind__muted">Sciences</span></h3>
+              <p class="ind__desc">Data-heavy environments that need reproducible pipelines and careful model evaluation.</p>
               <a class="ind__link" href="#" aria-label="Explore Life Sciences">
                 <span>Explore</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
               </a>
             </div>
-            <div class="ind__visual" aria-hidden="true">
-              <svg class="ind__icon" viewBox="0 0 64 64"><path d="M26 6v18L10 52a4 4 0 0 0 3.5 6h37a4 4 0 0 0 3.5-6L38 24V6M22 6h20M17 40h30" /></svg>
+            <div class="ind__visual">
+              <img class="ind__photo" src="./ind-lifesciences.jpg" alt="Researcher loading sample tubes with a pipette" width="1000" height="1000" loading="lazy" decoding="async" />
             </div>
           </li>
           <li class="ind__card" style="--i: 4">
             <div class="ind__copy">
               <span class="ind__num" aria-hidden="true">05</span>
               <h3 class="ind__name"><span>Industrial</span></h3>
+              <p class="ind__desc">Plant, fleet and supply-chain systems that have to keep running while they are modernised.</p>
               <a class="ind__link" href="#" aria-label="Explore Industrial">
                 <span>Explore</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
               </a>
             </div>
-            <div class="ind__visual" aria-hidden="true">
-              <svg class="ind__icon" viewBox="0 0 64 64"><path d="M6 56V30l14 8v-8l14 8v-8l14 8V10h10v46zM14 46h6M26 46h6M38 46h6" /></svg>
+            <div class="ind__visual">
+              <img class="ind__photo" src="./ind-industrial.jpg" alt="Steel plant interior with overhead cranes" width="1000" height="1000" loading="lazy" decoding="async" />
             </div>
           </li>
           <li class="ind__card" style="--i: 5">
             <div class="ind__copy">
               <span class="ind__num" aria-hidden="true">06</span>
               <h3 class="ind__name"><span>Software &amp;</span><span class="ind__muted">Hi-Tech</span></h3>
+              <p class="ind__desc">Product companies scaling engineering teams, platforms and AI features at the same time.</p>
               <a class="ind__link" href="#" aria-label="Explore Software and Hi-Tech">
                 <span>Explore</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
               </a>
             </div>
-            <div class="ind__visual" aria-hidden="true">
-              <svg class="ind__icon" viewBox="0 0 64 64"><rect x="6" y="10" width="52" height="38" rx="4" /><path d="M24 22l-7 7 7 7M40 22l7 7-7 7M34 20l-4 18M22 56h20" /></svg>
+            <div class="ind__visual">
+              <img class="ind__photo" src="./ind-software.jpg" alt="Hands typing on a laptop showing code" width="1000" height="1000" loading="lazy" decoding="async" />
             </div>
           </li>
       </ol>
