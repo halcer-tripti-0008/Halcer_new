@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { NAV_LINKS } from "@/data/footer";
 import { useHeroVideo } from "@/hooks/useHeroVideo";
 import { cssVars } from "@/lib/css";
 import { BrandMark } from "./BrandMark";
@@ -15,6 +16,20 @@ const PLAY_ICON = "M7 5l11 7-11 7z";
 export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   useHeroVideo(videoRef);
+
+  // Phone/tablet menu: the desktop nav pill is hidden below 900px, so the menu button opens this panel.
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenuOpen(false);
+    const onResize = () => innerWidth > 900 && setMenuOpen(false);
+    document.addEventListener("keydown", onKey);
+    addEventListener("resize", onResize);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      removeEventListener("resize", onResize);
+    };
+  }, [menuOpen]);
 
   return (
     <div className="hero-track">
@@ -35,7 +50,7 @@ export function Hero() {
         </video>
         <div className="hero__shade" aria-hidden="true" />
 
-        <header className="nav">
+        <header className={`nav${menuOpen ? " is-menu-open" : ""}`}>
           <a className="pill brand reveal" href="#" aria-label="Halcer home" data-magnetic style={cssVars({ "--d": 0 })}>
             <BrandMark className="brand-mark" />
             <span>HALCER</span>
@@ -45,11 +60,30 @@ export function Hero() {
 
           <div className="nav-actions reveal" style={cssVars({ "--d": 2 })}>
             <Button label="Contact us" iconPath={CHAT_ICON} variant="primary" small />
-            <button className="menu-button" type="button" aria-label="Open menu" data-magnetic>
+            <button
+              className="menu-button"
+              type="button"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
+              data-magnetic
+              onClick={() => setMenuOpen((open) => !open)}
+            >
               <span />
               <span />
             </button>
           </div>
+
+          <nav className="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" hidden={!menuOpen}>
+            {NAV_LINKS.map((label) => (
+              <a key={label} href="#" onClick={() => setMenuOpen(false)}>
+                {label}
+              </a>
+            ))}
+            <a className="mobile-menu__cta" href="#" onClick={() => setMenuOpen(false)}>
+              Contact us
+            </a>
+          </nav>
         </header>
 
         <section className="hero__content" aria-labelledby="hero-title">

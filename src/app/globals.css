@@ -509,6 +509,11 @@ a:focus-visible .roll > span {
   display: none;
 }
 
+/* Phone/tablet dropdown opened by the menu button (hidden on desktop). */
+.mobile-menu {
+  display: none;
+}
+
 /* --------------------------------------------------------------------------
    Left content
    -------------------------------------------------------------------------- */
@@ -701,6 +706,64 @@ a:focus-visible .roll > span {
     width: 18px;
     height: 1.5px;
     background: var(--white);
+  }
+
+  .menu-button span {
+    transition: transform 0.4s var(--ease-soft);
+  }
+
+  .is-menu-open .menu-button span:first-child {
+    transform: translateY(3.75px) rotate(45deg);
+  }
+
+  .is-menu-open .menu-button span:last-child {
+    transform: translateY(-3.75px) rotate(-45deg);
+  }
+
+  .mobile-menu:not([hidden]) {
+    position: absolute;
+    z-index: 30;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px;
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    background: rgba(14, 14, 16, 0.98);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    animation: menu-in 0.35s var(--ease-out);
+  }
+
+  .mobile-menu a {
+    padding: 14px 16px;
+    border-radius: 14px;
+    color: var(--white);
+    font-size: 17px;
+    transition: background 0.3s var(--ease-soft);
+  }
+
+  .mobile-menu a:hover,
+  .mobile-menu a:focus-visible {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .mobile-menu__cta {
+    margin-top: 6px;
+    background: var(--white);
+    color: #0a0a0a !important;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  @keyframes menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
   }
 
   .hero__video {
@@ -2641,7 +2704,7 @@ a:focus-visible .roll > span {
 
 @media (max-width: 700px) {
   .ind {
-    --ind-h: min(54svh, 420px);
+    --ind-h: min(64svh, 500px);
   }
 
   .ind__card {
@@ -2653,6 +2716,8 @@ a:focus-visible .roll > span {
   .ind__visual {
     order: -1;
     min-height: 0;
+    /* The photo is absolutely positioned, so give the box its own height. */
+    aspect-ratio: 2 / 1;
   }
 
   .ind__name {
