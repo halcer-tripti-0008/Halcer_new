@@ -28,6 +28,18 @@ if (video) {
     // Some browsers block autoplay until muted is set as a property; retry once data is ready.
     video.muted = true;
     video.play?.().catch(() => video.addEventListener("canplay", () => video.play(), { once: true }));
+
+    // Clean loop: fade the clip out as it nears the end and back in after it restarts,
+    // instead of a hard jump cut (the native loop attribute stays as the fallback).
+    const SEAM = 0.5; // seconds
+    const watch = () => {
+      if (video.duration) {
+        const left = video.duration - video.currentTime;
+        video.classList.toggle("is-seam", left < SEAM);
+      }
+      requestAnimationFrame(watch);
+    };
+    requestAnimationFrame(watch);
   }
 }
 
@@ -198,12 +210,23 @@ if (journey && jcards.length === STACK.length && !reducedMotion) {
     time += Math.min(0.05, (now - last) / 1000 || 0);
     last = now;
     const w = jcards[0].offsetWidth;
+    const cont = jcards[0].parentElement;
+    const gap = parseFloat(getComputedStyle(cont).columnGap) || 0;
     jcards.forEach((card, k) => {
       const p = stackAmount(time - k * 0.03); // slight stagger keeps it organic
       const [x, y, r] = STACK[k];
       const drift = Math.sin(time * 2.2 + k * 1.7) * 0.6 * p; // gentle sway while stacked
+      // The stack offsets were measured for two small cards centred in the bottom row. The bottom
+      // cards are now wider and fill the row, so shift them back to where those small cards sat.
+      let fix = 0;
+      let scale = 1;
+      if (k >= 3) {
+        scale = 1 + (w / card.offsetWidth - 1) * 0.65 * p; // wide cards shrink toward the others' size
+        const oldCenter = cont.offsetWidth / 2 + (k === 3 ? -1 : 1) * (w + gap) / 2;
+        fix = oldCenter - (card.offsetLeft - cont.offsetLeft + card.offsetWidth / 2);
+      }
       card.style.transform =
-        `translate3d(${(x * w * p).toFixed(2)}px, ${(y * w * p).toFixed(2)}px, 0) rotate(${(r * p + drift).toFixed(3)}deg)`;
+        `translate3d(${(x * w * p + fix * p).toFixed(2)}px, ${(y * w * p).toFixed(2)}px, 0) rotate(${(r * p + drift).toFixed(3)}deg) scale(${scale.toFixed(4)})`;
     });
     requestAnimationFrame(tick);
   };
@@ -238,15 +261,27 @@ if (indCards.length > 1 && !reducedMotion) {
   const PEEK = 16; // matches the per-panel sticky offset in styles.css
   let ticking = false;
 
+  // How far each panel has slid over the one before it (0 = still below, 1 = fully on top, eased).
+  const ease = (t) => t * t * (3 - 2 * t);
   const update = () => {
     ticking = false;
-    for (let i = 0; i < indCards.length - 1; i++) {
-      const cur = indCards[i].getBoundingClientRect();
-      const next = indCards[i + 1].getBoundingClientRect();
-      const covered = 1 - Math.min(1, Math.max(0, (next.top - cur.top - PEEK) / cur.height));
-      indCards[i].style.transform = `scale(${(1 - covered * 0.05).toFixed(4)})`;
-      indCards[i].style.filter = covered > 0.001 ? `brightness(${(1 - covered * 0.35).toFixed(3)})` : "";
-    }
+    const arrived = indCards.map((card, i) => {
+      if (i === 0) return 0;
+      const prev = indCards[i - 1].getBoundingClientRect();
+      const cur = card.getBoundingClientRect();
+      return ease(1 - Math.min(1, Math.max(0, (cur.top - prev.top - PEEK) / cur.height)));
+    });
+    indCards.forEach((card, i) => {
+      // Depth = how many panels are (partly) stacked on top of this one. Every panel that is buried
+      // shrinks a little more and dims, so the pile reads as a receding stack of narrower slivers.
+      let depth = 0;
+      for (let k = i + 1; k < indCards.length; k++) depth += arrived[k];
+      const d = Math.min(depth, 3);
+      card.style.transform = d > 0.001 ? `scale(${(1 - d * 0.045).toFixed(4)})` : "";
+      card.style.filter = d > 0.001 ? `brightness(${(1 - d * 0.2).toFixed(3)})` : "";
+      const copy = card.querySelector(".ind__copy");
+      if (copy) copy.style.opacity = (1 - Math.min(1, depth) * 0.55).toFixed(3);
+    });
   };
 
   const section = document.querySelector(".ind");
@@ -264,5 +299,42 @@ if (indCards.length > 1 && !reducedMotion) {
   }, { passive: true });
   addEventListener("resize", update);
 }
+
+/* ------------------------------------------ Why Halcer: expanding cards */
+
+// In each row, the card under the pointer (or focused) becomes the active, expanded one.
+// CSS does the rest (widths, colour, photo); the first card is active by default.
+document.querySelectorAll(".why__row").forEach((row) => {
+  const cards = [...row.querySelectorAll(".why__card")];
+  const activate = (i) => {
+    row.dataset.active = i;
+    cards.forEach((c, k) => c.classList.toggle("is-active", k === i));
+  };
+  cards.forEach((card, i) => {
+    card.addEventListener("pointerenter", () => activate(i));
+    card.addEventListener("focus", () => activate(i));
+  });
+});
+
+/* ------------------------------------ Why Halcer: scroll-drawn rule */
+
+// The hairline above the header extends from the left as the section scrolls into view.
+const whyHead = document.querySelector(".why__head");
+if (whyHead && !reducedMotion) {
+  let queued = false;
+  const drawRule = () => {
+    queued = false;
+    const top = whyHead.getBoundingClientRect().top;
+    const p = (innerHeight * 0.95 - top) / (innerHeight * 0.55); // 0 when entering, 1 about mid-screen
+    whyHead.style.setProperty("--rule", Math.min(1, Math.max(0, p)).toFixed(3));
+  };
+  const queue = () => !queued && ((queued = true), requestAnimationFrame(drawRule));
+  addEventListener("scroll", queue, { passive: true });
+  addEventListener("resize", queue);
+  drawRule();
+}
+
+// Respect reduced-motion: the Who-we-are video stays on its first frame.
+if (reducedMotion) document.querySelector(".who__video")?.pause();
 
 root.classList.add("js");
