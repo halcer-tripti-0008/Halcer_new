@@ -6,3 +6,10 @@ From Klickpin.com*.mp4
 reference-contact.jpg
 # Unused assets
 who-rings.png
+
+# Next.js / Node
+node_modules
+.next
+out
+next-env.d.ts
+*.tsbuildinfo
