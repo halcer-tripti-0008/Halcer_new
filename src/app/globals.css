@@ -1294,26 +1294,39 @@ a:focus-visible .roll > span {
   .clients__grid {
     grid-template-columns: repeat(3, 1fr);
     column-gap: 16px;
+    row-gap: 8px;
     width: min(100%, 1382px);
-    padding: 0 24px;
+    padding: 0;
   }
 
   .clients__logo {
-    width: 72%;
+    width: 90%;
+    aspect-ratio: 280 / 90;
   }
 }
 
 @media (max-width: 560px) {
   .clients__grid {
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 20px;
-    row-gap: 24px;
-    width: min(100%, 1382px);
-    padding: 0 24px;
+    column-gap: 16px;
+    row-gap: 0;
+    width: 100%;
+    padding: 0;
   }
 
+  .clients {
+    padding-top: 48px;
+    padding-bottom: 8px;
+  }
+
+  /* Logos fill their half of the row (the artwork sits at the left of its box) in shorter boxes. */
   .clients__logo {
-    width: 80%;
+    width: 100%;
+    aspect-ratio: 280 / 84;
+    /* The artwork has built-in left padding and is small: enlarge it and pull it flush to the left edge. */
+    transform-origin: 0 50%;
+    translate: -20% 0;
+    scale: 1.45;
   }
 }
 
