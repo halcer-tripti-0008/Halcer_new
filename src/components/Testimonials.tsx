@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { TESTIMONIALS } from "@/data/testimonials";
 import { useInView } from "@/hooks/useInView";
 import { useJourneyStack } from "@/hooks/useJourneyStack";
+import { useJourneyCover } from "@/hooks/useJourneyCover";
 
 /**
  * Testimonial cards move between a grid and an overlapping stack.
@@ -11,12 +12,17 @@ import { useJourneyStack } from "@/hooks/useJourneyStack";
  */
 export function Testimonials() {
   const [ref, inView] = useInView<HTMLElement>();
+  const sectionRef = useRef<HTMLElement | null>(null);
   const cardsRef = useRef<HTMLOListElement>(null);
   useJourneyStack(cardsRef);
+  useJourneyCover(sectionRef);
 
   return (
     <section
-      ref={ref}
+      ref={(el) => {
+        ref.current = el;
+        sectionRef.current = el;
+      }}
       className={`journey${inView ? " is-inview" : ""}`}
       id="testimonials"
       aria-labelledby="testimonials-title"

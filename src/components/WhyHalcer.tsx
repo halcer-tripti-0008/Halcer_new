@@ -3,6 +3,7 @@
 import { useRef, useState, type ReactNode } from "react";
 import { useInView } from "@/hooks/useInView";
 import { useScrollRule } from "@/hooks/useScrollRule";
+import { useWhyCarousel } from "@/hooks/useWhyCarousel";
 import { cssVars } from "@/lib/css";
 
 interface WhyCard {
@@ -125,12 +126,25 @@ function WhyRow({ cards, variant, firstIndex }: { cards: WhyCard[]; variant: "3"
 }
 
 export function WhyHalcer() {
-  const [ref, inView] = useInView<HTMLElement>();
+  const [inViewRef, inView] = useInView<HTMLElement>();
+  const sectionRef = useRef<HTMLElement | null>(null);
   const headRef = useRef<HTMLElement>(null);
   useScrollRule(headRef);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const thumbRef = useRef<HTMLSpanElement>(null);
+  useWhyCarousel(sectionRef, gridRef, trackRef, thumbRef);
 
   return (
-    <section ref={ref} className={`why${inView ? " is-inview" : ""}`} id="why" aria-labelledby="why-title">
+    <section
+      ref={(el) => {
+        inViewRef.current = el;
+        sectionRef.current = el;
+      }}
+      className={`why${inView ? " is-inview" : ""}`}
+      id="why"
+      aria-labelledby="why-title"
+    >
       <div className="why__inner">
         <header className="why__head" ref={headRef}>
           <h2 className="why__label" id="why-title">
@@ -146,9 +160,16 @@ export function WhyHalcer() {
           </p>
         </header>
 
-        <div className="why__grid">
-          <WhyRow cards={row3} variant="3" firstIndex={0} />
-          <WhyRow cards={row2} variant="2" firstIndex={3} />
+        <div className="why__grid" ref={gridRef}>
+          <div className="why__track" ref={trackRef}>
+            <WhyRow cards={row3} variant="3" firstIndex={0} />
+            <WhyRow cards={row2} variant="2" firstIndex={3} />
+          </div>
+        </div>
+
+        {/* Phones only: progress track under the swipe carousel. */}
+        <div className="why__progress" aria-hidden="true">
+          <span className="why__progress-thumb" ref={thumbRef} />
         </div>
       </div>
     </section>

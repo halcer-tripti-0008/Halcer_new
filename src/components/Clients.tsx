@@ -22,12 +22,12 @@ export function Clients() {
       </h2>
       <ul className="clients__grid">
         {CLIENTS.map((client, n) => (
-          <li key={client.logo} style={cssVars({ "--n": n })}>
+          <li key={client.file} style={cssVars({ "--n": n })}>
             <span
               className="clients__logo"
               role="img"
               aria-label={client.name}
-              style={cssVars({ "--logo": `url('/assets/logos/${client.logo}.svg')` })}
+              style={cssVars({ "--logo": `url('/assets/logos/${client.file}')` })}
             />
           </li>
         ))}

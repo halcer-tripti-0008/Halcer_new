@@ -1,19 +1,24 @@
 export interface Client {
   name: string;
-  logo: string;
+  /** File in public/assets/logos, including its extension. */
+  file: string;
 }
 
 export const CLIENTS: Client[] = [
-  { name: "Mapbox", logo: "mapbox" },
-  { name: "Cisco", logo: "cisco" },
-  { name: "Spark New Zealand", logo: "spark" },
-  { name: "TradingView", logo: "tradingview" },
-  { name: "SCA", logo: "sca" },
-  { name: "Punto Pago", logo: "puntopago" },
-  { name: "FlipaClip", logo: "flipaclip" },
-  { name: "Bank al Etihad", logo: "bankaletihad" },
-  { name: "Raiffeisen Bank", logo: "raiffeisen" },
-  { name: "IKEA", logo: "ikea" },
-  { name: "McDonald's", logo: "mcdonalds" },
-  { name: "Housing.com", logo: "housing" },
+  { name: "NEC", file: "nec.svg" },
+  { name: "StatusNeo", file: "statusneo.svg" },
+  { name: "Robosoft Technologies", file: "robosoft.svg" },
+  { name: "AB InBev", file: "abinbev.svg" },
+  { name: "Turing", file: "turing.svg" },
+  { name: "Kotak Mutual Fund", file: "kotak.svg" },
+  { name: "HHM Hotels", file: "hhm-hotels.webp" },
+  { name: "Saviant", file: "saviant.svg" },
+  { name: "Client", file: "logo-9.svg" },
+  { name: "GrowIndigo", file: "growindigo.png" },
+  { name: "Nimap Infotech", file: "nimap.svg" },
+  { name: "Kitman Labs", file: "kitman-labs.svg" },
+  { name: "TALN", file: "taln.png" },
+  { name: "Dentsu", file: "dentsu.png" },
+  { name: "Yodaplus", file: "yodaplus.svg" },
+  { name: "LaunchLab", file: "launchlab.png" },
 ];
