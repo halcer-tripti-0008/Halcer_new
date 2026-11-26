@@ -1394,9 +1394,13 @@ a:focus-visible .roll > span {
     padding: 0;
   }
 
+  /* Equal visual weight: each logo gets the same area (width = s * sqrt(ratio)), but is capped in height
+     (tall marks) and in width (very wide wordmarks), so no logo looks bigger or smaller than the rest. */
   .clients__logo {
-    width: 90%;
-    aspect-ratio: 280 / 90;
+    --s: clamp(60px, 10.5vw, 88px);
+    width: min(calc(var(--s) * var(--w)), calc(var(--s) * 0.8 * var(--ar)), 94%);
+    margin-inline: auto;
+    aspect-ratio: var(--ar);
   }
 }
 
@@ -1416,9 +1420,11 @@ a:focus-visible .roll > span {
 
   /* Two logos per row, each centred in its half of the row. */
   .clients__logo {
-    width: 78%;
-    margin-inline: auto;
-    aspect-ratio: 280 / 100;
+    --s: clamp(56px, 16.4vw, 72px);
+  }
+  .clients__grid li {
+    display: grid;
+    align-items: center; /* centre logos of different heights on the row */
   }
 }
 

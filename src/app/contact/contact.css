@@ -1,0 +1,292 @@
+/* ==========================================================================
+   Halcer — Contact page (dark theme; Manrope body, Inter headings)
+   ========================================================================== */
+
+.contact {
+  --ct-head: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --ct-radius: clamp(16px, 1.6vw, 26px);
+  padding: calc(var(--nav-h) + clamp(48px, 9vh, 120px)) var(--pad) clamp(60px, 10vh, 130px);
+  background: var(--bg);
+}
+
+/* Breadcrumb */
+.ct-crumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: clamp(22px, 3.4vw, 44px);
+  color: var(--muted);
+  font-size: clamp(13px, 0.95vw, 15px);
+}
+.ct-crumbs a {
+  color: var(--white);
+  text-decoration: none;
+}
+.ct-crumbs a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.ct-crumbs svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ct-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(36px, 7vw, 130px);
+  align-items: start;
+  max-width: 1500px;
+}
+
+/* ---------- Form card ---------- */
+.ct-card {
+  padding: clamp(24px, 3vw, 48px);
+  border-radius: var(--ct-radius);
+  background: var(--bg-raise);
+  border: 1px solid var(--line);
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.8);
+}
+.ct-card__title {
+  margin: clamp(4px, 1.4vw, 24px) 0 0;
+  font: 600 clamp(26px, 2.3vw, 38px) / 1.1 var(--ct-head);
+  letter-spacing: -0.035em;
+}
+.ct-card__intro {
+  margin: 14px 0 clamp(20px, 2.4vw, 32px);
+  color: var(--muted);
+  font-size: clamp(14px, 1.1vw, 18px);
+  line-height: 1.55;
+}
+
+.ct-field {
+  display: block;
+  margin-bottom: clamp(14px, 1.5vw, 22px);
+}
+.ct-field > span,
+.ct-field > label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--soft);
+  font-size: clamp(13px, 1vw, 15px);
+  font-weight: 500;
+}
+.ct-card input[type="text"],
+.ct-card input[type="email"],
+.ct-card input[type="tel"],
+.ct-card select,
+.ct-card textarea {
+  width: 100%;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: #1d1d1d;
+  color: var(--white);
+  font: 400 clamp(14px, 1.05vw, 16px) "Manrope", system-ui, sans-serif;
+  height: clamp(44px, 3.2vw, 52px);
+  transition: border-color 0.3s var(--ease-soft), background 0.3s var(--ease-soft);
+}
+.ct-card textarea {
+  height: auto;
+  min-height: 140px;
+  padding: 14px 16px;
+  resize: vertical;
+}
+.ct-card input:hover,
+.ct-card select:hover,
+.ct-card textarea:hover {
+  background: #222;
+}
+.ct-card input:focus,
+.ct-card select:focus,
+.ct-card textarea:focus {
+  outline: none;
+  border-color: #0059b3;
+  background: #202020;
+}
+.ct-card input:user-invalid,
+.ct-card textarea:user-invalid {
+  border-color: #c4483f;
+}
+
+.ct-phone {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+}
+.ct-phone select {
+  width: auto;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.ct-consent {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin: clamp(22px, 2.6vw, 36px) 0;
+  color: var(--muted);
+  font-size: clamp(12px, 0.9vw, 14px);
+  line-height: 1.5;
+  cursor: pointer;
+}
+.ct-consent input {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  accent-color: #0059b3;
+}
+.ct-consent a {
+  color: var(--white);
+  text-underline-offset: 3px;
+}
+
+.ct-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 clamp(24px, 2.2vw, 34px);
+  height: clamp(50px, 3.8vw, 60px);
+  border: 0;
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--ink);
+  font: 600 clamp(12px, 0.95vw, 15px) "Manrope", system-ui, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.4s var(--ease-soft), color 0.4s var(--ease-soft), transform 0.5s var(--ease-out);
+}
+.ct-submit svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.45s var(--ease-out);
+}
+.ct-submit:hover {
+  background: var(--accent);
+  color: var(--white);
+}
+.ct-submit:hover svg {
+  transform: translateX(5px);
+}
+.ct-submit:active {
+  transform: scale(0.97);
+}
+
+/* Thank-you state */
+.ct-sent {
+  display: grid;
+  justify-items: start;
+  gap: 14px;
+  padding-block: clamp(40px, 6vw, 90px);
+}
+.ct-sent__tick {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #0059b3;
+}
+.ct-sent__tick svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ct-sent h2 {
+  margin: 8px 0 0;
+  font: 600 clamp(28px, 2.6vw, 44px) / 1.1 var(--ct-head);
+  letter-spacing: -0.035em;
+}
+.ct-sent p {
+  margin: 0;
+  max-width: 26em;
+  color: var(--muted);
+  font-size: clamp(14px, 1.1vw, 18px);
+  line-height: 1.6;
+}
+.ct-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--white);
+  font: 600 14px "Manrope", system-ui, sans-serif;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+/* ---------- Details ---------- */
+.ct-info {
+  display: grid;
+  gap: clamp(40px, 6vw, 90px);
+  padding-top: clamp(0px, 1.4vw, 24px);
+}
+.ct-info__title {
+  margin: 0 0 clamp(16px, 2vw, 28px);
+  font: 600 clamp(28px, 3vw, 52px) / 1.1 var(--ct-head);
+  letter-spacing: -0.04em;
+}
+.ct-cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2.4vw, 40px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ct-cols__label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: clamp(13px, 1vw, 16px);
+}
+.ct-cols a,
+.ct-cols address {
+  color: var(--white);
+  font: 500 clamp(14px, 1.15vw, 19px) / 1.5 "Manrope", system-ui, sans-serif;
+  font-style: normal;
+  text-decoration: none;
+}
+.ct-cols address span {
+  display: block;
+}
+.ct-cols a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .ct-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact {
+    padding-top: calc(var(--nav-h) + 84px);
+  }
+  .ct-cols {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .ct-phone select {
+    max-width: 120px;
+  }
+}

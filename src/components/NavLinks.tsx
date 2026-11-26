@@ -1,14 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { NAV_LINKS } from "@/data/footer";
+import Link from "next/link";
+import { NAV_HREFS, NAV_LINKS } from "@/data/footer";
 import { cssVars } from "@/lib/css";
 import { Roll } from "./Roll";
 
-const ACTIVE = 0;
-
 /** Primary navigation with a pill that slides under the hovered/focused link and back to the active one. */
-export function NavLinks() {
+export function NavLinks({ active }: { active: (typeof NAV_LINKS)[number] | null }) {
+  const ACTIVE = active ? NAV_LINKS.indexOf(active) : -1;
   const [hover, setHover] = useState<number | null>(null);
   const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const indicatorRef = useRef<HTMLSpanElement>(null);
@@ -16,7 +16,11 @@ export function NavLinks() {
   const place = useCallback((index: number) => {
     const link = linkRefs.current[index];
     const indicator = indicatorRef.current;
-    if (!link || !indicator) return;
+    if (!indicator) return;
+    if (!link) {
+      indicator.style.width = "0px"; // no active page (e.g. Contact): hide the pill
+      return;
+    }
     indicator.style.width = `${link.offsetWidth}px`;
     indicator.style.transform = `translateX(${link.offsetLeft}px)`;
   }, []);
@@ -46,9 +50,9 @@ export function NavLinks() {
           .filter(Boolean)
           .join(" ");
         return (
-          <a
+          <Link
             key={label}
-            href="#"
+            href={NAV_HREFS[label]}
             ref={(el) => {
               linkRefs.current[i] = el;
             }}
@@ -58,7 +62,7 @@ export function NavLinks() {
             onFocus={() => setHover(i)}
           >
             <Roll>{label}</Roll>
-          </a>
+          </Link>
         );
       })}
     </nav>

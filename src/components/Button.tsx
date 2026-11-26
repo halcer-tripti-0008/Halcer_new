@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { PointerEvent, ReactNode } from "react";
 import { Roll } from "./Roll";
 
@@ -9,10 +10,12 @@ interface ButtonProps {
   iconPath: string;
   variant: "primary" | "ghost";
   small?: boolean;
+  /** Link target (defaults to "#"). */
+  href?: string;
 }
 
 /** Hero button: a fill grows from the point where the pointer entered. */
-export function Button({ label, iconPath, variant, small }: ButtonProps): ReactNode {
+export function Button({ label, iconPath, variant, small, href = "#" }: ButtonProps): ReactNode {
   const onEnter = (e: PointerEvent<HTMLAnchorElement>) => {
     const btn = e.currentTarget;
     const r = btn.getBoundingClientRect();
@@ -24,7 +27,7 @@ export function Button({ label, iconPath, variant, small }: ButtonProps): ReactN
     .join(" ");
 
   return (
-    <a className={classes} href="#" data-magnetic onPointerEnter={onEnter}>
+    <Link className={classes} href={href} data-magnetic onPointerEnter={onEnter}>
       <span className="btn__fill" aria-hidden="true" />
       <span className="btn__icon" aria-hidden="true">
         <svg viewBox="0 0 24 24">
@@ -32,6 +35,6 @@ export function Button({ label, iconPath, variant, small }: ButtonProps): ReactN
         </svg>
       </span>
       <Roll>{label}</Roll>
-    </a>
+    </Link>
   );
 }

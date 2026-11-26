@@ -27,7 +27,11 @@ export function Clients() {
               className="clients__logo"
               role="img"
               aria-label={client.name}
-              style={cssVars({ "--logo": `url('/assets/logos/${client.file}')` })}
+              style={cssVars({
+                "--logo": `url('/assets/logos/${client.file}')`,
+                "--ar": client.ratio,
+                "--w": Math.sqrt(client.ratio).toFixed(3),
+              })}
             />
           </li>
         ))}

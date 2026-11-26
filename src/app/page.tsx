@@ -21,7 +21,7 @@ export default function HomePage() {
         <WhyHalcer />
         <Industries />
       </main>
-      <Footer />
+      <Footer showCta />
       <Cursor />
       <PageEffects />
     </>

@@ -62,7 +62,7 @@ export function Who() {
             <video
               ref={videoRef}
               className="who__video"
-              src="/assets/video/who-video.mp4"
+              src="/assets/video/who-video-hd.mp4"
               autoPlay
               muted
               loop
