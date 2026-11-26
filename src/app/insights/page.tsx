@@ -26,33 +26,17 @@ export default function InsightsPage() {
       <SiteHeader active="Insights" />
       <main className="insights" data-nav-image>
         <section className="in-hero">
-          <p className="in-eyebrow reveal" style={cssVars({ "--d": 0 })}>
-            <span>{h.eyebrow}</span>
-            <i />
-            <span className="in-eyebrow__muted">{h.volume}</span>
-          </p>
-          <h1 className="in-hero__title reveal" style={cssVars({ "--d": 1 })}>
+          <h1 className="in-hero__title reveal" style={cssVars({ "--d": 0 })}>
             {h.title}
           </h1>
-          <p className="in-hero__lede reveal" style={cssVars({ "--d": 2 })}>
+          <p className="in-hero__lede reveal" style={cssVars({ "--d": 1 })}>
             {h.lede}
           </p>
-          <div className="in-hero__meta reveal" style={cssVars({ "--d": 3 })}>
-            {h.meta.map((m) => (
-              <span key={m}>{m}</span>
-            ))}
-            <a href="#recent">
-              Jump to recent <Arrow />
-            </a>
-          </div>
         </section>
 
         <section className="in-desk" id="recent">
           <header className="in-desk__head reveal">
             <div>
-              <p className="in-eyebrow in-eyebrow--dark">
-                <span>{DESK.eyebrow}</span>
-              </p>
               <h2>{DESK.heading}</h2>
             </div>
             <p>{DESK.note}</p>

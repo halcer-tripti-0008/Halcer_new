@@ -1,7 +1,7 @@
 /* Halcer — Insights page (dark hero, light article desk, dark outlook) */
 .insights {
   --in-blue: #0059b3;
-  --in-head: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --in-head: "Manrope", system-ui, sans-serif; /* same family as the home hero */
   --in-mono: ui-monospace, "SF Mono", Menlo, monospace;
   background: var(--bg);
 }
@@ -47,12 +47,12 @@
 /* Hero */
 .in-hero {
   padding: calc(var(--nav-h) + clamp(70px, 14vh, 170px)) var(--pad) clamp(40px, 6vh, 70px);
-  background: radial-gradient(120% 90% at 20% 0%, #0b1a2c 0%, var(--bg) 60%);
+  background: var(--bg);
 }
 .in-hero__title {
   max-width: 14em;
   margin: 0;
-  font: 700 clamp(36px, 5.2vw, 88px) / 1.02 var(--in-head);
+  font: 500 clamp(36px, 5.2vw, 88px) / 1.08 var(--in-head); /* matches .headline on the home hero */
   letter-spacing: -0.045em;
 }
 .in-hero__lede {
@@ -347,18 +347,6 @@
 .in-brief:hover {
   transform: translateY(-4px);
   box-shadow: 0 28px 50px -28px rgba(0, 20, 60, 0.55);
-}
-/* Headline underline sweep */
-.in-lead h3,
-.in-brief h3 {
-  background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
-  padding-bottom: 3px;
-  width: fit-content;
-  transition: background-size 0.7s var(--ease-out);
-}
-.in-lead:hover h3,
-.in-brief:hover h3 {
-  background-size: 100% 2px;
 }
 /* "Read" arrow button fills on hover */
 .in-read svg {

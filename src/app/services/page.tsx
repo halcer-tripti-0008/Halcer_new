@@ -157,10 +157,6 @@ export default function ServicesPage() {
           <ul className="sv-cards">
             {DOMAINS.map((d, i) => (
               <li key={d.n} className="sv-card reveal" style={cssVars({ "--d": i % 3 })}>
-                <span className="sv-card__n">{d.n}</span>
-                <span className="sv-card__big" aria-hidden="true">
-                  {d.n}
-                </span>
                 <h3>{d.title}</h3>
                 <ul className="sv-tags sv-tags--dark">
                   {d.tags.map((t) => (

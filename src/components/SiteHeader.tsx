@@ -7,6 +7,7 @@ import { cssVars } from "@/lib/css";
 import { BrandMark } from "./BrandMark";
 import { Button } from "./Button";
 import { NavLinks } from "./NavLinks";
+import { Roll } from "./Roll";
 
 const CHAT_ICON = "M4 6h16v10H8l-4 3z";
 
@@ -66,23 +67,36 @@ export function SiteHeader({ active }: { active: (typeof NAV_LINKS)[number] | nu
           </button>
         </div>
 
+        {/* Always rendered so it can animate both ways; `inert` keeps it out of reach while closed. */}
         <nav
           className="mobile-menu"
           id="mobile-menu"
           aria-label="Mobile navigation"
-          hidden={!menuOpen}
+          aria-hidden={!menuOpen}
+          inert={!menuOpen}
         >
-          {NAV_LINKS.map((label) => (
-            <a key={label} href={NAV_HREFS[label]} onClick={() => setMenuOpen(false)}>
-              {label}
+          {NAV_LINKS.map((label, i) => (
+            <a
+              key={label}
+              href={NAV_HREFS[label]}
+              className={label === active ? "is-current" : undefined}
+              style={cssVars({ "--i": i })}
+              onClick={() => setMenuOpen(false)}
+            >
+              <Roll>{label}</Roll>
+              {label === active && <i className="mobile-menu__dot" aria-hidden="true" />}
+              <svg className="mobile-menu__arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 17 17 7M9 7h8v8" />
+              </svg>
             </a>
           ))}
           <a
             className="mobile-menu__cta"
             href="/contact"
+            style={cssVars({ "--i": NAV_LINKS.length })}
             onClick={() => setMenuOpen(false)}
           >
-            Contact us
+            <Roll>Contact us</Roll>
           </a>
         </nav>
       </header>

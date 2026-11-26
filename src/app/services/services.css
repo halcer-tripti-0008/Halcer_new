@@ -27,11 +27,7 @@
   align-items: center;
   min-height: min(100svh, 860px);
   padding: calc(var(--nav-h) + 40px) var(--pad) clamp(50px, 8vh, 100px);
-  background:
-    radial-gradient(ellipse 40% 45% at 22% 38%, rgba(0, 89, 179, 0.28), transparent 70%),
-    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px) 0 0 / 52px 52px,
-    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px) 0 0 / 52px 52px,
-    #05070a;
+  background: #05070a;
   overflow: hidden;
 }
 .sv-hero__title {
@@ -383,20 +379,8 @@
   background: #0b0e14;
   transition: transform 0.5s var(--ease-out), border-color 0.4s, background 0.4s;
 }
-.sv-card__n {
-  color: var(--sv-blue-2);
-  font: 600 clamp(9px, 0.7vw, 11px) var(--sv-mono);
-}
-.sv-card__big {
-  position: absolute;
-  top: clamp(12px, 1.4vw, 22px);
-  right: clamp(14px, 1.6vw, 26px);
-  color: rgba(255, 255, 255, 0.05);
-  font: 700 clamp(40px, 4.6vw, 80px) / 1 "Manrope", system-ui, sans-serif;
-  transition: color 0.4s;
-}
 .sv-card h3 {
-  margin: clamp(26px, 3vw, 46px) 0 clamp(14px, 1.4vw, 20px);
+  margin: 0 0 clamp(14px, 1.4vw, 20px); /* title now leads the card (numbers removed) */
   font: 500 clamp(17px, 1.4vw, 23px) / 1.2 "Manrope", system-ui, sans-serif;
   letter-spacing: -0.02em;
 }
@@ -404,9 +388,6 @@
   transform: translateY(-5px);
   border-color: rgba(26, 115, 232, 0.5);
   background: #0d121b;
-}
-.sv-card:hover .sv-card__big {
-  color: rgba(26, 115, 232, 0.22);
 }
 
 /* ---------- CTA ---------- */
