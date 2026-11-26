@@ -1,292 +1,425 @@
 /* ==========================================================================
-   Halcer — Contact page (dark theme; Manrope body, Inter headings)
+   Halcer — Contact page (layout from the reference; Halcer dark theme and fonts)
    ========================================================================== */
 
 .contact {
   --ct-head: "Inter", "Helvetica Neue", Arial, sans-serif;
-  --ct-radius: clamp(16px, 1.6vw, 26px);
-  padding: calc(var(--nav-h) + clamp(48px, 9vh, 120px)) var(--pad) clamp(60px, 10vh, 130px);
-  background: var(--bg);
+  --ct-w: min(100%, 1120px);
+  --ct-blue: #0059b3;
+  --ct-ink: #0a0a0a;
+  --ct-mute: #6b6b6b;
+  --ct-line: rgba(0, 0, 0, 0.16);
+  padding: calc(var(--nav-h) + clamp(60px, 11vh, 140px)) var(--pad) clamp(70px, 11vh, 140px);
+  background: #f1f1f1; /* light grey, like the reference */
+  color: var(--ct-ink);
+}
+.ct-top,
+.ct-map,
+.ct-faq {
+  width: var(--ct-w);
+  margin-inline: auto;
 }
 
-/* Breadcrumb */
-.ct-crumbs {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: clamp(22px, 3.4vw, 44px);
-  color: var(--muted);
-  font-size: clamp(13px, 0.95vw, 15px);
-}
-.ct-crumbs a {
-  color: var(--white);
-  text-decoration: none;
-}
-.ct-crumbs a:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.ct-crumbs svg {
-  width: 16px;
-  height: 16px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.ct-title {
+  margin: 0 0 clamp(28px, 4vw, 56px);
+  font: 700 clamp(38px, 4.4vw, 76px) / 1.05 var(--ct-head);
+  letter-spacing: -0.04em;
 }
 
 .ct-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(36px, 7vw, 130px);
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: 0;
   align-items: start;
-  max-width: 1500px;
+}
+.ct-grid > :first-child {
+  padding-right: clamp(24px, 4vw, 64px);
+  border-right: 1px solid var(--ct-line);
 }
 
-/* ---------- Form card ---------- */
-.ct-card {
-  padding: clamp(24px, 3vw, 48px);
-  border-radius: var(--ct-radius);
-  background: var(--bg-raise);
-  border: 1px solid var(--line);
-  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.8);
+/* ---------- Form ---------- */
+.ct-form__title,
+.ct-info h3 {
+  margin: 0;
+  font: 600 clamp(15px, 1.15vw, 19px) / 1.3 var(--ct-head);
+  letter-spacing: -0.01em;
 }
-.ct-card__title {
-  margin: clamp(4px, 1.4vw, 24px) 0 0;
-  font: 600 clamp(26px, 2.3vw, 38px) / 1.1 var(--ct-head);
-  letter-spacing: -0.035em;
-}
-.ct-card__intro {
-  margin: 14px 0 clamp(20px, 2.4vw, 32px);
-  color: var(--muted);
-  font-size: clamp(14px, 1.1vw, 18px);
+.ct-form__intro,
+.ct-info p {
+  margin: 8px 0 0;
+  color: var(--ct-mute);
+  font-size: clamp(12px, 0.9vw, 14px);
   line-height: 1.55;
 }
+.ct-form__intro {
+  margin-bottom: clamp(18px, 2vw, 28px);
+}
 
+.ct-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2.4vw, 36px);
+}
 .ct-field {
   display: block;
-  margin-bottom: clamp(14px, 1.5vw, 22px);
+  margin-bottom: clamp(14px, 1.6vw, 22px);
 }
 .ct-field > span,
 .ct-field > label {
   display: block;
-  margin-bottom: 8px;
-  color: var(--soft);
-  font-size: clamp(13px, 1vw, 15px);
-  font-weight: 500;
+  margin-bottom: 4px;
+  color: var(--ct-ink);
+  font-size: clamp(11px, 0.8vw, 13px);
+  font-weight: 600;
 }
-.ct-card input[type="text"],
-.ct-card input[type="email"],
-.ct-card input[type="tel"],
-.ct-card select,
-.ct-card textarea {
+.ct-form input[type="text"],
+.ct-form input[type="email"],
+.ct-form input[type="tel"],
+.ct-form select,
+.ct-form textarea {
   width: 100%;
-  padding: 0 16px;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  background: #1d1d1d;
-  color: var(--white);
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 1.5px solid var(--ct-ink);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ct-ink);
   font: 400 clamp(14px, 1.05vw, 16px) "Manrope", system-ui, sans-serif;
-  height: clamp(44px, 3.2vw, 52px);
-  transition: border-color 0.3s var(--ease-soft), background 0.3s var(--ease-soft);
+  transition: border-color 0.3s var(--ease-soft);
 }
-.ct-card textarea {
-  height: auto;
-  min-height: 140px;
-  padding: 14px 16px;
+.ct-form select {
+  cursor: pointer;
+}
+.ct-form select option {
+  color: #0a0a0a;
+  background: #fff;
+}
+.ct-form textarea {
+  min-height: 96px;
   resize: vertical;
+  border: 0;
+  border-bottom: 1.5px solid var(--ct-ink);
 }
-.ct-card input:hover,
-.ct-card select:hover,
-.ct-card textarea:hover {
-  background: #222;
-}
-.ct-card input:focus,
-.ct-card select:focus,
-.ct-card textarea:focus {
+.ct-form input:focus,
+.ct-form select:focus,
+.ct-form textarea:focus {
   outline: none;
-  border-color: #0059b3;
-  background: #202020;
+  border-color: var(--ct-blue);
 }
-.ct-card input:user-invalid,
-.ct-card textarea:user-invalid {
+.ct-form input:user-invalid {
   border-color: #c4483f;
 }
-
 .ct-phone {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  gap: 8px;
+  gap: 10px;
 }
 .ct-phone select {
   width: auto;
-  padding-right: 10px;
-  cursor: pointer;
+  padding-right: 6px;
 }
 
-.ct-consent {
+.ct-form__foot {
   display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  margin: clamp(22px, 2.6vw, 36px) 0;
-  color: var(--muted);
-  font-size: clamp(12px, 0.9vw, 14px);
-  line-height: 1.5;
-  cursor: pointer;
+  justify-content: flex-end;
+  margin-top: clamp(10px, 1.4vw, 20px);
 }
-.ct-consent input {
-  flex: none;
-  width: 20px;
-  height: 20px;
-  margin: 2px 0 0;
-  accent-color: #0059b3;
-}
-.ct-consent a {
-  color: var(--white);
-  text-underline-offset: 3px;
-}
-
 .ct-submit {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  padding: 0 clamp(24px, 2.2vw, 34px);
-  height: clamp(50px, 3.8vw, 60px);
+  gap: 8px;
+  padding: 0 clamp(18px, 1.6vw, 26px);
+  height: clamp(36px, 2.8vw, 44px);
   border: 0;
-  border-radius: 999px;
-  background: var(--white);
-  color: var(--ink);
-  font: 600 clamp(12px, 0.95vw, 15px) "Manrope", system-ui, sans-serif;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  border-radius: 6px;
+  background: var(--ct-ink);
+  color: #fff;
+  font: 600 clamp(12px, 0.9vw, 14px) "Manrope", system-ui, sans-serif;
   cursor: pointer;
-  transition: background 0.4s var(--ease-soft), color 0.4s var(--ease-soft), transform 0.5s var(--ease-out);
+  transition: background 0.35s var(--ease-soft), color 0.35s var(--ease-soft), transform 0.4s var(--ease-out);
 }
 .ct-submit svg {
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 2;
+  stroke-width: 2.2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  transition: transform 0.45s var(--ease-out);
+  transition: transform 0.4s var(--ease-out);
 }
 .ct-submit:hover {
-  background: var(--accent);
-  color: var(--white);
+  background: var(--ct-blue);
+  color: #fff;
 }
 .ct-submit:hover svg {
-  transform: translateX(5px);
+  transform: translateX(4px);
 }
 .ct-submit:active {
-  transform: scale(0.97);
+  transform: scale(0.96);
 }
 
-/* Thank-you state */
 .ct-sent {
   display: grid;
   justify-items: start;
-  gap: 14px;
-  padding-block: clamp(40px, 6vw, 90px);
+  gap: 12px;
+  padding-block: clamp(20px, 4vw, 60px);
 }
 .ct-sent__tick {
   display: grid;
   place-items: center;
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background: #0059b3;
+  background: var(--ct-blue);
 }
 .ct-sent__tick svg {
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   fill: none;
   stroke: #fff;
   stroke-width: 2.6;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.ct-sent h2 {
-  margin: 8px 0 0;
-  font: 600 clamp(28px, 2.6vw, 44px) / 1.1 var(--ct-head);
-  letter-spacing: -0.035em;
+.ct-sent h3 {
+  margin: 6px 0 0;
+  font: 600 clamp(24px, 2.2vw, 36px) / 1.1 var(--ct-head);
+  letter-spacing: -0.03em;
 }
 .ct-sent p {
   margin: 0;
   max-width: 26em;
-  color: var(--muted);
-  font-size: clamp(14px, 1.1vw, 18px);
+  color: var(--ct-mute);
   line-height: 1.6;
 }
 .ct-link {
   padding: 0;
   border: 0;
   background: none;
-  color: var(--white);
+  color: var(--ct-ink);
   font: 600 14px "Manrope", system-ui, sans-serif;
   text-decoration: underline;
   text-underline-offset: 4px;
   cursor: pointer;
 }
 
-/* ---------- Details ---------- */
+/* ---------- Call / Visit / Chat ---------- */
 .ct-info {
   display: grid;
-  gap: clamp(40px, 6vw, 90px);
-  padding-top: clamp(0px, 1.4vw, 24px);
-}
-.ct-info__title {
-  margin: 0 0 clamp(16px, 2vw, 28px);
-  font: 600 clamp(28px, 3vw, 52px) / 1.1 var(--ct-head);
-  letter-spacing: -0.04em;
-}
-.ct-cols {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(18px, 2.4vw, 40px);
+  gap: clamp(22px, 2.6vw, 38px);
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 clamp(24px, 4vw, 64px);
   list-style: none;
 }
-.ct-cols__label {
-  display: block;
-  margin-bottom: 10px;
-  color: var(--muted);
-  font-size: clamp(13px, 1vw, 16px);
-}
-.ct-cols a,
-.ct-cols address {
-  color: var(--white);
-  font: 500 clamp(14px, 1.15vw, 19px) / 1.5 "Manrope", system-ui, sans-serif;
-  font-style: normal;
+.ct-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  color: var(--ct-blue);
+  font: 600 clamp(11px, 0.85vw, 13px) "Manrope", system-ui, sans-serif;
   text-decoration: none;
 }
-.ct-cols address span {
-  display: block;
+.ct-chip__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(0, 89, 179, 0.14);
+  transition: background 0.35s var(--ease-soft), transform 0.45s var(--ease-out);
 }
-.ct-cols a:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+.ct-chip__icon svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ct-chip:hover .ct-chip__icon {
+  background: var(--ct-blue);
+  color: #fff;
+  transform: scale(1.12);
+}
+
+/* ---------- Map ---------- */
+.ct-map {
+  margin-top: clamp(50px, 8vw, 110px);
+  height: clamp(260px, 32vw, 460px);
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid var(--ct-line);
+  background: #e5e5e5;
+}
+.ct-map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(1) contrast(0.9) brightness(1.05); /* grey map, like the reference */
+}
+
+/* ---------- FAQ ---------- */
+.ct-faq {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: clamp(28px, 5vw, 90px);
+  margin-top: clamp(60px, 9vw, 130px);
+}
+.ct-faq__eyebrow {
+  margin: 0 0 10px;
+  font: 700 12px var(--ct-head);
+  letter-spacing: 0.08em;
+}
+.ct-faq h2 {
+  margin: 0;
+  max-width: 6em;
+  font: 700 clamp(32px, 3.6vw, 62px) / 1.12 var(--ct-head);
+  letter-spacing: -0.04em;
+}
+.ct-faq__lead {
+  margin: 0;
+  font: 600 clamp(14px, 1vw, 16px) var(--ct-head);
+}
+.ct-faq__text {
+  margin: 14px 0 clamp(18px, 2vw, 28px);
+  color: var(--ct-mute);
+  font-size: clamp(12px, 0.9vw, 14px);
+  line-height: 1.7;
+}
+.ct-faq__list details {
+  border-bottom: 1px solid var(--ct-line);
+}
+.ct-faq__list summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  list-style: none;
+  cursor: pointer;
+  color: #555;
+  font: 600 clamp(12px, 0.9vw, 14px) "Manrope", system-ui, sans-serif;
+  transition: color 0.3s var(--ease-soft);
+}
+.ct-faq__list summary::-webkit-details-marker {
+  display: none;
+}
+.ct-faq__list summary:hover,
+.ct-faq__list details[open] summary {
+  color: var(--ct-ink);
+}
+.ct-faq__list summary i {
+  position: relative;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--ct-ink);
+  transition: transform 0.45s var(--ease-out), background 0.3s var(--ease-soft);
+}
+.ct-faq__list summary i::before,
+.ct-faq__list summary i::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 1.6px;
+  background: #fff;
+  transform: translate(-50%, -50%);
+}
+.ct-faq__list summary i::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  transition: transform 0.45s var(--ease-out);
+}
+.ct-faq__list details[open] summary i {
+  background: var(--ct-blue);
+}
+.ct-faq__list details[open] summary i::before,
+.ct-faq__list details[open] summary i::after {
+  background: #fff;
+}
+.ct-faq__list details[open] summary i::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+.ct-faq__list details p {
+  margin: 0;
+  padding: 0 32px 16px 0;
+  color: var(--ct-mute);
+  font-size: clamp(12px, 0.9vw, 14px);
+  line-height: 1.65;
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 1000px) {
+@media (max-width: 860px) {
   .ct-grid {
     grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .ct-grid > :first-child {
+    padding-right: 0;
+    border-right: 0;
+  }
+  .ct-info {
+    padding-left: 0;
+    padding-top: 36px;
+    border-top: 1px solid var(--ct-line);
+  }
+  .ct-faq {
+    grid-template-columns: 1fr;
+  }
+  .ct-faq h2 {
+    max-width: none;
   }
 }
-
-@media (max-width: 640px) {
+@media (max-width: 560px) {
   .contact {
     padding-top: calc(var(--nav-h) + 84px);
   }
-  .ct-cols {
+  .ct-row {
     grid-template-columns: 1fr;
-    gap: 22px;
+    gap: 0;
   }
-  .ct-phone select {
-    max-width: 120px;
+  .ct-form__foot {
+    justify-content: stretch;
+  }
+  .ct-submit {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Desktop nav on the light page: dark logo, links and pill. */
+@media (min-width: 901px) {
+  body:has(.contact) .nav .brand,
+  body:has(.contact) .nav .brand span,
+  body:has(.contact) .nav .brand-mark {
+    color: #0a0a0a;
+  }
+  body:has(.contact) .nav-links {
+    background: rgba(10, 10, 10, 0.05);
+    border-color: rgba(10, 10, 10, 0.12);
+  }
+  body:has(.contact) .nav-links a {
+    color: #444;
+  }
+  body:has(.contact) .nav-links a.is-active,
+  body:has(.contact) .nav-links a.is-hover {
+    color: #fff;
+  }
+  body:has(.contact) .nav-links__indicator {
+    background: #0a0a0a;
+  }
+  body:has(.contact) .nav-links.is-hovering .nav-links__indicator {
+    background: #0059b3;
+  }
+  body:has(.contact) .nav-actions .btn--light {
+    border: 1px solid rgba(10, 10, 10, 0.12);
+    box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.35);
   }
 }

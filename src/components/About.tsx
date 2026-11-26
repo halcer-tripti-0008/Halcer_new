@@ -29,7 +29,7 @@ export function AboutHero() {
         className="ab-hero__visual"
         style={{ backgroundImage: `url(${ABOUT_HERO_IMAGE})` }}
         role="img"
-        aria-label="Three stacked layers: applications, models and data"
+        aria-label="Engineers working at their desks"
       />
       <div className="ab-hero__top">
         <div className="ab-hero__head">

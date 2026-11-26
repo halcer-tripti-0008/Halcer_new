@@ -107,9 +107,9 @@ export default function InsightsPage() {
             <h2>{OUTLOOK.title}</h2>
             <p>{OUTLOOK.text}</p>
             <blockquote>{OUTLOOK.quote}</blockquote>
-            <Link href="/contact" className="in-cta">
+            <a href="mailto:hello@halcer.com?subject=Request%20the%20Outlook%202026%20briefing" className="in-cta">
               {OUTLOOK.cta} <Arrow />
-            </Link>
+            </a>
           </div>
           <div className="in-outlook__img reveal">
             <span style={{ backgroundImage: `url(${OUTLOOK.image})` }} />

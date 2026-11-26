@@ -1,0 +1,613 @@
+/* Halcer — Services page (layout from the design screenshot) */
+.services {
+  --sv-blue: #0059b3;
+  --sv-blue-2: #1a73e8;
+  --sv-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  background: #05070a;
+  color: #fff;
+}
+.services em {
+  font-style: normal;
+  color: var(--sv-blue-2);
+}
+.sv-eyebrow {
+  margin: 0 0 18px;
+  color: var(--sv-blue-2);
+  font: 600 clamp(10px, 0.75vw, 12px) var(--sv-mono);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* ---------- Hero ---------- */
+.sv-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(30px, 6vw, 110px);
+  align-items: center;
+  min-height: min(100svh, 860px);
+  padding: calc(var(--nav-h) + 40px) var(--pad) clamp(50px, 8vh, 100px);
+  background:
+    radial-gradient(ellipse 40% 45% at 22% 38%, rgba(0, 89, 179, 0.28), transparent 70%),
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px) 0 0 / 52px 52px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px) 0 0 / 52px 52px,
+    #05070a;
+  overflow: hidden;
+}
+.sv-hero__title {
+  margin: 0;
+  font: 600 clamp(34px, 4.6vw, 84px) / 1.04 "Manrope", system-ui, sans-serif;
+  letter-spacing: -0.04em;
+}
+.sv-hero__title span {
+  display: inline;
+}
+.sv-hero__lede {
+  max-width: 30em;
+  margin: clamp(16px, 2vw, 26px) 0 0;
+  color: #aeb4bd;
+  font-size: clamp(14px, 1.15vw, 19px);
+  line-height: 1.55;
+}
+.sv-steps {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: clamp(18px, 2vw, 28px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.sv-steps li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #6f7782;
+}
+.sv-steps span {
+  padding: 6px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+  color: #cfd4da;
+  font: 500 clamp(9px, 0.7vw, 11px) var(--sv-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.sv-hero__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(18px, 2.4vw, 34px);
+  margin-top: clamp(24px, 3vw, 40px);
+}
+.sv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 6px 6px 6px clamp(18px, 1.6vw, 26px);
+  border-radius: 999px;
+  font: 600 clamp(12px, 0.95vw, 15px) "Manrope", system-ui, sans-serif;
+  text-decoration: none;
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-soft);
+}
+.sv-btn b {
+  display: grid;
+  place-items: center;
+  width: clamp(28px, 2.2vw, 36px);
+  height: clamp(28px, 2.2vw, 36px);
+  border-radius: 50%;
+  transition: transform 0.4s var(--ease-out);
+}
+.sv-btn svg,
+.sv-explore svg,
+.sv-circle svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sv-btn--light {
+  background: #fff;
+  color: #0a0a0a;
+}
+.sv-btn--light b {
+  background: var(--sv-blue);
+  color: #fff;
+}
+.sv-btn--blue {
+  background: var(--sv-blue);
+  color: #fff;
+  box-shadow: 0 14px 40px -12px rgba(0, 89, 179, 0.8);
+}
+.sv-btn--blue b {
+  background: #fff;
+  color: var(--sv-blue);
+}
+.sv-btn:hover {
+  transform: translateY(-3px);
+}
+.sv-btn:hover b {
+  transform: translateX(3px);
+}
+.sv-btn:active {
+  transform: scale(0.97);
+}
+.sv-textlink,
+.sv-mail {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #aeb4bd;
+  font: 400 clamp(11px, 0.85vw, 13px) "Manrope", system-ui, sans-serif;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.sv-mail {
+  font-family: var(--sv-mono);
+}
+.sv-textlink i,
+.sv-mail i {
+  width: 26px;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.4s var(--ease-out);
+}
+.sv-textlink:hover,
+.sv-mail:hover {
+  color: #fff;
+}
+.sv-textlink:hover i,
+.sv-mail:hover i {
+  width: 44px;
+}
+
+/* index card */
+.sv-index {
+  padding: clamp(16px, 1.6vw, 24px) clamp(18px, 1.8vw, 28px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(8, 11, 16, 0.78);
+  backdrop-filter: blur(8px);
+}
+.sv-index__head {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  color: #8a919b;
+  font: 500 clamp(9px, 0.7vw, 11px) var(--sv-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.sv-index__head span:last-child {
+  color: var(--sv-blue-2);
+}
+.sv-index ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sv-index li + li {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+.sv-index a {
+  display: grid;
+  grid-template-columns: 34px 1fr 16px;
+  align-items: center;
+  padding: clamp(12px, 1.2vw, 18px) 0;
+  color: #e5e8ec;
+  font-size: clamp(12px, 0.95vw, 15px);
+  text-decoration: none;
+  transition: color 0.3s, padding 0.4s var(--ease-out);
+}
+.sv-index a span:first-child {
+  color: var(--sv-blue-2);
+  font: 500 clamp(9px, 0.7vw, 11px) var(--sv-mono);
+}
+.sv-index svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: #6f7782;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.4s var(--ease-out), stroke 0.3s;
+}
+.sv-index a:hover {
+  color: #fff;
+  padding-left: 8px;
+}
+.sv-index a:hover svg {
+  stroke: var(--sv-blue-2);
+  transform: translateX(4px);
+}
+
+/* ---------- Section heads ---------- */
+.sv-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(24px, 5vw, 90px);
+  align-items: end;
+  margin-bottom: clamp(36px, 5vw, 70px);
+}
+.sv-head h2 {
+  margin: 0;
+  font: 600 clamp(30px, 3.9vw, 70px) / 1.05 "Manrope", system-ui, sans-serif;
+  letter-spacing: -0.04em;
+}
+.sv-head > p {
+  max-width: 34em;
+  margin: 0;
+  color: #9aa1ab;
+  font-size: clamp(13px, 1vw, 16px);
+  line-height: 1.6;
+}
+.sv-head--light h2 {
+  color: #0a0a0a;
+}
+.sv-head--light em {
+  color: var(--sv-blue);
+}
+.sv-head--light > p {
+  color: #666;
+}
+
+/* ---------- Engage (light) ---------- */
+.sv-engage {
+  padding: clamp(70px, 10vw, 150px) var(--pad) clamp(60px, 8vw, 120px);
+  background: #fff;
+  color: #0a0a0a;
+}
+.sv-lines {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #e8e8ec;
+}
+.sv-line {
+  display: grid;
+  grid-template-columns: clamp(50px, 7vw, 110px) minmax(0, 1.2fr) minmax(0, 1fr) 46px;
+  gap: clamp(16px, 3vw, 50px);
+  align-items: start;
+  padding: clamp(26px, 3.4vw, 50px) 0;
+  border-bottom: 1px solid #e8e8ec;
+}
+.sv-line__no {
+  display: grid;
+  gap: 12px;
+  color: var(--sv-blue);
+  font: 500 clamp(9px, 0.7vw, 11px) var(--sv-mono);
+}
+.sv-line__no svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sv-line h3 {
+  margin: 0 0 clamp(12px, 1.2vw, 18px);
+  font: 500 clamp(20px, 1.9vw, 32px) / 1.1 "Manrope", system-ui, sans-serif;
+  letter-spacing: -0.03em;
+}
+.sv-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sv-tags li {
+  padding: 5px 10px;
+  border: 1px solid #e3e6ec;
+  border-radius: 3px;
+  background: #f3f5f8;
+  color: #4a505a;
+  font: 500 clamp(8px, 0.62vw, 10px) var(--sv-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.sv-tags--dark li {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.06);
+  color: #c4c9d0;
+}
+.sv-line__side p {
+  max-width: 28em;
+  margin: 0 0 18px;
+  color: #6a6f78;
+  font-size: clamp(12px, 0.9vw, 14px);
+  line-height: 1.6;
+}
+.sv-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #0a0a0a;
+  font: 500 clamp(9px, 0.7vw, 11px) var(--sv-mono);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.sv-explore svg {
+  transition: transform 0.4s var(--ease-out);
+}
+.sv-line:hover .sv-explore svg {
+  transform: translateX(5px);
+}
+.sv-circle {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #dcdfe5;
+  border-radius: 50%;
+  color: #0a0a0a;
+  transition: background 0.35s, color 0.35s, border-color 0.35s, transform 0.45s var(--ease-out);
+}
+.sv-line:hover .sv-circle,
+.sv-circle:hover {
+  background: var(--sv-blue);
+  border-color: var(--sv-blue);
+  color: #fff;
+  transform: scale(1.08);
+}
+
+/* ---------- Domains (dark) ---------- */
+.sv-domains {
+  padding: clamp(70px, 10vw, 150px) var(--pad);
+  background: #05070a;
+}
+.sv-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 24px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sv-card {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(22px, 2.4vw, 36px);
+  min-height: clamp(180px, 17vw, 270px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: #0b0e14;
+  transition: transform 0.5s var(--ease-out), border-color 0.4s, background 0.4s;
+}
+.sv-card__n {
+  color: var(--sv-blue-2);
+  font: 600 clamp(9px, 0.7vw, 11px) var(--sv-mono);
+}
+.sv-card__big {
+  position: absolute;
+  top: clamp(12px, 1.4vw, 22px);
+  right: clamp(14px, 1.6vw, 26px);
+  color: rgba(255, 255, 255, 0.05);
+  font: 700 clamp(40px, 4.6vw, 80px) / 1 "Manrope", system-ui, sans-serif;
+  transition: color 0.4s;
+}
+.sv-card h3 {
+  margin: clamp(26px, 3vw, 46px) 0 clamp(14px, 1.4vw, 20px);
+  font: 500 clamp(17px, 1.4vw, 23px) / 1.2 "Manrope", system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+.sv-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(26, 115, 232, 0.5);
+  background: #0d121b;
+}
+.sv-card:hover .sv-card__big {
+  color: rgba(26, 115, 232, 0.22);
+}
+
+/* ---------- CTA ---------- */
+.sv-cta {
+  display: grid;
+  justify-items: center;
+  padding: clamp(80px, 11vw, 160px) var(--pad);
+  text-align: center;
+  background: radial-gradient(ellipse 55% 60% at 50% 50%, rgba(0, 89, 179, 0.2), transparent 70%), #07090d;
+}
+.sv-cta h2 {
+  max-width: 15em;
+  margin: 0;
+  font: 600 clamp(32px, 4.6vw, 82px) / 1.05 "Manrope", system-ui, sans-serif;
+  letter-spacing: -0.045em;
+}
+.sv-cta h2 em {
+  color: var(--sv-blue);
+}
+.sv-cta__text {
+  max-width: 36em;
+  margin: clamp(18px, 2vw, 28px) 0 0;
+  color: #aeb4bd;
+  font-size: clamp(13px, 1.1vw, 18px);
+  line-height: 1.6;
+}
+.sv-cta__actions {
+  justify-content: center;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .sv-hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding-top: calc(var(--nav-h) + 90px);
+  }
+  .sv-head {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+  .sv-line {
+    grid-template-columns: 56px minmax(0, 1fr) 42px;
+  }
+  .sv-line__side {
+    grid-column: 2 / 3;
+    grid-row: 2;
+  }
+  .sv-circle {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .sv-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .sv-cards {
+    grid-template-columns: 1fr;
+  }
+  .sv-line {
+    grid-template-columns: 40px minmax(0, 1fr) 40px;
+    gap: 14px;
+  }
+  .sv-hero__actions {
+    gap: 16px;
+  }
+}
+
+/* ---------- Engage rows: entrance + hover pop ---------- */
+.sv-line {
+  position: relative;
+  isolation: isolate;
+}
+.sv-line > * {
+  position: relative;
+}
+/* the card that pops up behind a row on hover */
+.sv-line::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 8px calc(-1 * clamp(10px, 1vw, 18px));
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 30px 60px -28px rgba(0, 40, 100, 0.35), 0 0 0 1px rgba(0, 89, 179, 0.14);
+  opacity: 0;
+  transform: translateY(10px) scale(0.975);
+  transition: opacity 0.4s var(--ease-soft), transform 0.55s var(--ease-out);
+  pointer-events: none;
+}
+/* blue accent bar */
+.sv-line::after {
+  content: "";
+  position: absolute;
+  left: calc(-1 * clamp(10px, 1vw, 18px));
+  top: 28%;
+  bottom: 28%;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--sv-blue);
+  transform: scaleY(0);
+  transition: transform 0.5s var(--ease-out);
+}
+.sv-line:hover::before {
+  opacity: 1;
+  transform: translateY(-4px) scale(1.012);
+}
+.sv-line:hover::after {
+  transform: scaleY(1);
+}
+.sv-line h3 {
+  transition: transform 0.5s var(--ease-out), color 0.3s;
+}
+.sv-line:hover h3 {
+  transform: translateX(10px);
+  color: var(--sv-blue);
+}
+.sv-line .sv-tags li {
+  transition: background 0.35s, color 0.35s, border-color 0.35s, transform 0.45s var(--ease-out);
+}
+.sv-line:hover .sv-tags li {
+  background: #e8f1fc;
+  border-color: #b9d4f2;
+  color: var(--sv-blue);
+  transform: translateY(-2px);
+}
+.sv-line:hover .sv-tags li:nth-child(2) { transition-delay: 0.04s; }
+.sv-line:hover .sv-tags li:nth-child(3) { transition-delay: 0.08s; }
+.sv-line:hover .sv-tags li:nth-child(4) { transition-delay: 0.12s; }
+.sv-line__no svg {
+  transition: transform 0.6s var(--ease-out);
+}
+.sv-line:hover .sv-line__no svg {
+  transform: scale(1.35) rotate(-8deg);
+}
+.sv-line__side p {
+  transition: color 0.3s;
+}
+.sv-line:hover .sv-line__side p {
+  color: #2d3139;
+}
+.sv-explore {
+  position: relative;
+}
+.sv-explore::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease-out);
+}
+.sv-line:hover .sv-explore::after {
+  transform: scaleX(1);
+}
+
+/* entrance: rows slide in one after another, the divider draws across */
+@keyframes sv-line-in {
+  from { opacity: 0; transform: translateY(34px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes sv-draw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.sv-lines {
+  position: relative;
+  border-top: 0;
+}
+.sv-lines::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e8e8ec;
+  transform-origin: left;
+  animation: sv-draw 1.2s var(--ease-out) both;
+}
+.sv-head--light .sv-eyebrow,
+.sv-head--light h2 em {
+  background-image: linear-gradient(90deg, var(--sv-blue), var(--sv-blue-2), var(--sv-blue));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: sv-shimmer 5s linear infinite;
+}
+@keyframes sv-shimmer {
+  to { background-position: -200% 0; }
+}
+@media (hover: none) {
+  .sv-line::before, .sv-line::after { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sv-lines::before, .sv-head--light .sv-eyebrow, .sv-head--light h2 em { animation: none; }
+  .sv-line *, .sv-line::before, .sv-line::after { transition: none !important; }
+}

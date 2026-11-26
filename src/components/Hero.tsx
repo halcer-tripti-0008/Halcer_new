@@ -62,11 +62,13 @@ export function Hero() {
                 label="Speak with a specialist"
                 iconPath={ARROW_ICON}
                 variant="primary"
+                href="/contact"
               />
               <Button
                 label="Explore our services"
                 iconPath={PLAY_ICON}
                 variant="ghost"
+                href="/services"
               />
             </div>
           </section>

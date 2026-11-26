@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { useInView } from "@/hooks/useInView";
 import { prefersReducedMotion } from "@/lib/css";
@@ -30,11 +31,11 @@ export function Who() {
               <span>
                 <span className="who__outline">are ?</span>
               </span>
-              <a className="who__arrow" href="#" aria-label="Explore our services" data-magnetic>
+              <Link className="who__arrow" href="/services" aria-label="Explore our services" data-magnetic>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M7 7l10 10M17 8v9H8" />
                 </svg>
-              </a>
+              </Link>
             </span>
           </h2>
 

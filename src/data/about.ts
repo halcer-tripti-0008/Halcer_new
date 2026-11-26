@@ -4,7 +4,7 @@ const IMG = "/assets/images";
 export const ABOUT_HERO_VIDEO = "/assets/video/about-laptop-loop.mp4";
 export const ABOUT_HERO_POSTER = `${IMG}/about/hero-poster.jpg`;
 
-export const ABOUT_HERO_IMAGE = `${IMG}/about/hero-visual.jpg`;
+export const ABOUT_HERO_IMAGE = `${IMG}/about/hero-photo.jpg`;
 
 export interface SpaceSlide {
   title: string;

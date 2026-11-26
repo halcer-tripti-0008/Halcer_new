@@ -100,7 +100,7 @@
   bottom: clamp(50px, 11vh, 110px);
   width: min(30%, 520px);
   border-radius: clamp(16px, 1.8vw, 28px);
-  background: #020406 center / contain no-repeat; /* whole picture, nothing cropped */
+  background: #020406 center 62% / cover no-repeat;
   pointer-events: none;
 }
 .ab-hero__top {
@@ -315,6 +315,14 @@
   padding: clamp(90px, 18vh, 220px) var(--pad);
   max-width: 1500px;
   margin: 0 auto;
+  /* white band that runs edge to edge behind the centred text */
+  background: #fff;
+  color: #0a0a0a;
+  box-shadow: 0 0 0 100vmax #fff;
+  clip-path: inset(0 -100vmax);
+}
+.ab-idea .ab-eyebrow {
+  color: #5f5f5f;
 }
 .ab-idea__text {
   margin: 0;
@@ -599,7 +607,30 @@
     gap: 14px;
   }
   .ab-approach__cols p {
-    font-size: 17px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  /* phone: heading stays clear of the floating nav, copy sits low as one tidy block */
+  .ab-approach {
+    height: 190svh;
+  }
+  .ab-approach__stage {
+    padding-top: calc(var(--nav-h) + 56px);
+  }
+  .ab-approach__bg {
+    transform: scale(calc(1.08 - 0.08 * var(--p)));
+    background-position: 62% center;
+  }
+  .ab-approach__shade {
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.3) 38%, rgba(10, 10, 10, 0.88) 78%);
+  }
+  .ab-approach__title {
+    font-size: clamp(40px, 12.5vw, 56px);
+    transform: none;
+  }
+  .ab-approach__cols {
+    bottom: 36px;
+    transform: translateY(calc((1 - min(1, var(--p) * 3)) * 40px));
   }
   .ab-values {
     padding-block: 36px 48px;
