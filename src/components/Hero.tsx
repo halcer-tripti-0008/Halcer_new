@@ -104,10 +104,10 @@ export function Hero() {
             loop
             playsInline
             preload="auto"
-            poster="/assets/images/hero/hero-poster.jpg"
+            poster="/assets/images/hero/hero-poster.jpg?v=hd3"
             aria-hidden="true"
           >
-            <source src="/assets/video/hero-loop.mp4" type="video/mp4" />
+            <source src="/assets/video/hero-loop.mp4?v=hd3" type="video/mp4" />
           </video>
           <div className="hero__shade" aria-hidden="true" />
 
