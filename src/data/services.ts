@@ -39,7 +39,8 @@ export const SERVICES: Service[] = [
     title: "Software & platforms",
     text: "Product engineering, architecture, quality, DevOps, and SRE for systems that have to run under load.",
     bullets: ["Product engineering", "Architecture", "Quality", "DevOps & SRE"],
-    image: `${IMG}/services-software.svg`,
+    image: `${IMG}/services-software.jpg`,
+    focus: "50% 40%",
     tone: "grey",
   },
   {
@@ -66,7 +67,7 @@ export const SERVICES: Service[] = [
 
 export const SERVICES_FOOT = {
   talk: { label: "Bring us the hard part.", title: "Get in touch", href: "/contact" },
-  team: { label: "Join our team", title: "Careers", href: "#", image: `${IMG}/who/who-photo.jpg` },
+  team: { label: "Join our team", title: "Careers", href: "/careers", image: `${IMG}/who/who-photo.jpg` },
 };
 
 export const DOMAINS_HEAD = {
