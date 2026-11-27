@@ -55,6 +55,7 @@ export const DOMAINS: Domain[] = [
 ];
 
 export interface Role {
+  slug: string; // job page: /careers/[slug]
   title: string;
   domain: string; // Domain id
   practice: Practice;
@@ -75,6 +76,7 @@ export const ROLES_HEAD = {
 
 export const ROLES: Role[] = [
   {
+    slug: "principal-genai-solutions-architect",
     title: "Principal GenAI Solutions Architect",
     domain: "ai-genai",
     practice: "ai",
@@ -86,6 +88,7 @@ export const ROLES: Role[] = [
     tier: "Staff / Principal tier",
   },
   {
+    slug: "staff-distributed-systems-engineer",
     title: "Staff Distributed Systems Engineer",
     domain: "software-platforms",
     practice: "platforms",
@@ -97,6 +100,7 @@ export const ROLES: Role[] = [
     tier: "Staff specialist tier",
   },
   {
+    slug: "lead-cloud-security-appsec-architect",
     title: "Lead Cloud Security & AppSec Architect",
     domain: "cloud-data-security",
     practice: "cloud",
@@ -108,6 +112,7 @@ export const ROLES: Role[] = [
     tier: "Lead architect tier",
   },
   {
+    slug: "technical-engagement-director-pod-manager",
     title: "Technical Engagement Director & Pod Manager",
     domain: "digital-delivery",
     practice: "delivery",
@@ -155,3 +160,87 @@ export const OPEN_APPLICATION = {
   text: "We continually open custom pods for extraordinary engineers, distributed architects, and technical leaders who alter the velocity of teams.",
   cta: "Send open application",
 };
+
+/* ---------- Job pages (/careers/[slug]) ---------- */
+
+export interface JobDetail {
+  about: string[];
+  responsibilities: string[];
+  requirements: string[];
+  niceToHave?: string[];
+}
+
+/** DRAFT job descriptions written to fill the layout — confirm with the hiring team before launch. */
+export const JOB_DETAILS: Record<string, JobDetail> = {
+  "principal-genai-solutions-architect": {
+    about: [
+      "You will lead the architecture of production GenAI systems for tier-1 financial and healthcare clients — from retrieval and model choice to evaluation, guardrails and cost.",
+      "You will work inside a small, senior pod that reports directly to the client's engineering leadership, and you will own the technical outcome end to end.",
+    ],
+    responsibilities: [
+      "Design LLM pipelines, retrieval systems and agentic workflows that hold up under real load.",
+      "Set up evaluation suites and guardrails before anything ships, and keep them running in production.",
+      "Make model, hosting and cost trade-offs with client CTOs and explain them clearly.",
+      "Mentor engineers in the pod and raise the bar on code review and design.",
+    ],
+    requirements: [
+      "Significant experience shipping ML or GenAI systems to production, not just prototypes.",
+      "Strong software engineering in Python and at least one typed language.",
+      "Hands-on experience with retrieval, fine-tuning or serving large models.",
+      "Comfort working directly with senior client stakeholders.",
+    ],
+    niceToHave: ["Experience in regulated industries such as banking or healthcare.", "Open-source or research contributions in ML."],
+  },
+  "staff-distributed-systems-engineer": {
+    about: [
+      "You will build the high-throughput, low-latency backbone that our clients' products run on: consensus, event streaming and the network layers in between.",
+    ],
+    responsibilities: [
+      "Design and build distributed services in Go and Rust with clear failure modes.",
+      "Own reliability: observability, load testing and incident follow-through.",
+      "Lead technical design reviews across pods and document decisions.",
+    ],
+    requirements: [
+      "Deep experience building and operating distributed systems in production.",
+      "Strong Go or Rust, and a solid understanding of networking and concurrency.",
+      "Experience with event streaming platforms and consistency trade-offs.",
+    ],
+    niceToHave: ["Contributions to open-source infrastructure projects."],
+  },
+  "lead-cloud-security-appsec-architect": {
+    about: [
+      "You will lead zero-trust hardening, application security and cryptography policy across multi-cloud estates, working inside delivery pods rather than as a final gate.",
+    ],
+    responsibilities: [
+      "Define and automate security controls in delivery pipelines.",
+      "Lead threat modelling with engineering teams early in design.",
+      "Drive container and dependency vulnerability remediation at scale.",
+      "Advise client leadership on identity, data protection and cryptography.",
+    ],
+    requirements: [
+      "Strong background in cloud security across at least two major providers.",
+      "Hands-on application security experience, including secure code review.",
+      "Experience automating security checks in CI/CD.",
+    ],
+    niceToHave: ["Relevant certifications (e.g. CISSP, OSCP, cloud security specialities)."],
+  },
+  "technical-engagement-director-pod-manager": {
+    about: [
+      "You will bridge deep technical work and executive governance, leading several delivery pods through critical enterprise modernisation programmes.",
+    ],
+    responsibilities: [
+      "Own delivery outcomes, risks and stakeholder communication for your programmes.",
+      "Shape pods: staffing, ways of working and engineering standards.",
+      "Run governance with client executives without slowing teams down.",
+    ],
+    requirements: [
+      "Track record leading complex technology programmes to production.",
+      "An engineering background and the credibility to go deep with technical teams.",
+      "Excellent written and spoken communication with senior stakeholders.",
+    ],
+  },
+};
+
+export const EXPERIENCE_OPTIONS = ["0–2 years", "3–5 years", "6–10 years", "10+ years"];
+
+export const getRole = (slug: string) => ROLES.find((r) => r.slug === slug);

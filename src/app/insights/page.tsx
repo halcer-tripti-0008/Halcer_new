@@ -30,6 +30,17 @@ export default function InsightsPage() {
           {/* Featured story: large photo card with the text over it */}
           <Link href={`/insights/${LEAD_STORY.slug}`} className="in-featured reveal">
             <span className="in-featured__bg" style={{ backgroundImage: `url(${LEAD_STORY.image})` }} aria-hidden="true" />
+            <video
+              className="in-featured__video"
+              src={LEAD_STORY.video}
+              poster={LEAD_STORY.image}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-hidden="true"
+            />
             <span className="in-featured__body">
               <span className="in-featured__tag">
                 Featured · {LEAD_STORY.section}

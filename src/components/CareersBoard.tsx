@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState, type FormEvent, type ReactNode } from "react";
+import Link from "next/link";
 import {
   CAREERS_EMAIL,
   CAREERS_HERO,
@@ -225,12 +226,9 @@ export function CareersBoard() {
                 </p>
                 <div className="cr-role__foot">
                   <span>{r.tier}</span>
-                  <a
-                    className="cr-btn cr-btn--small"
-                    href={`mailto:${CAREERS_EMAIL}?subject=${encodeURIComponent(`Application: ${r.title}`)}`}
-                  >
+                  <Link className="cr-btn cr-btn--small" href={`/careers/${r.slug}`}>
                     View &amp; apply <Arrow />
-                  </a>
+                  </Link>
                 </div>
               </li>
             ))}

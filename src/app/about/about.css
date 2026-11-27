@@ -6,7 +6,7 @@
 .about {
   --ab-ease: var(--ease-out);
   --ab-radius: clamp(14px, 1.6vw, 28px);
-  --ab-head: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --ab-head: var(--font-sans);
   background: var(--bg);
   overflow-x: clip;
 }
@@ -112,8 +112,8 @@
   padding: 0 var(--pad) 0 calc(var(--pad) + 5px); /* +5px on the left of the text */
 }
 .ab-title.headline {
-  font-size: clamp(34px, min(4.2vw, 10.5vh), 96px);
-  line-height: 1.05;
+  font: var(--head-weight) var(--h1-size) / var(--head-lh) var(--font-sans);
+  letter-spacing: var(--head-track);
 }
 .ab-hero__head .ab-eyebrow {
   margin-bottom: clamp(12px, 3.5vh, 36px);
@@ -121,8 +121,8 @@
 .ab-hero__top .lede {
   margin: 0;
   max-width: 28em;
-  font-size: clamp(16px, min(1.75vw, 3.6vh), 30px);
-  line-height: 1.5;
+  font-size: var(--lede-size);
+  line-height: var(--lede-lh);
 }
 
 /* ---------- 2. Slider ---------- */
@@ -153,8 +153,8 @@
 .ab-space__heading {
   max-width: 14em;
   margin: 0;
-  font: 600 clamp(26px, min(2.9vw, 6vh), 52px) / 1.12 var(--ab-head);
-  letter-spacing: -0.035em;
+  font: var(--head-weight) var(--h2-size) / var(--head-lh) var(--font-sans);
+  letter-spacing: var(--head-track);
 }
 .ab-space__intro {
   max-width: 30em;
@@ -181,8 +181,8 @@
   margin: 0;
   overflow: hidden;
   padding-bottom: 0.12em;
-  font: 600 clamp(24px, min(2.5vw, 5.4vh), 44px) / 1.12 var(--ab-head);
-  letter-spacing: -0.03em;
+  font: var(--head-weight) var(--h3-size) / 1.25 var(--font-sans);
+  letter-spacing: -0.02em;
 }
 .ab-space__title span {
   display: block;
@@ -206,8 +206,8 @@
 .ab-space__text {
   margin-top: clamp(10px, 1.2vw, 18px);
   color: var(--soft);
-  font-size: clamp(14px, 1.15vw, 19px);
-  line-height: 1.6;
+  font-size: var(--lede-size);
+  line-height: var(--lede-lh);
 }
 .ab-space__note {
   display: flex;
@@ -326,8 +326,8 @@
 }
 .ab-idea__text {
   margin: 0;
-  font: 500 clamp(28px, 4.6vw, 84px) / 1.12 "Manrope", system-ui, sans-serif;
-  letter-spacing: -0.04em;
+  font: var(--head-weight) var(--h2-size) / var(--head-lh) var(--font-sans);
+  letter-spacing: var(--head-track);
 }
 .ab-idea__word {
   opacity: clamp(0.16, calc(0.16 + var(--p) * var(--n) * 1.25 - var(--i) * 1.25), 1);
@@ -371,8 +371,8 @@
   flex: 1;
   margin: 0;
   text-align: center;
-  font: 400 clamp(30px, 4.6vw, 84px) / 1.15 "Manrope", system-ui, sans-serif;
-  letter-spacing: -0.04em;
+  font: var(--head-weight) var(--h2-size) / var(--head-lh) var(--font-sans);
+  letter-spacing: var(--head-track);
   color: var(--soft);
   transition: color 0.5s var(--ease-soft), letter-spacing 0.7s var(--ab-ease);
 }
@@ -414,8 +414,8 @@
   position: relative;
   z-index: 2;
   margin: 0;
-  font: 600 clamp(38px, 6.2vw, 120px) / 1.04 var(--ab-head);
-  letter-spacing: -0.04em;
+  font: var(--head-weight) var(--h1-size) / var(--head-lh) var(--font-sans);
+  letter-spacing: var(--head-track);
   transform: translateY(calc(var(--p) * -14vh));
 }
 .ab-approach__title em {
@@ -439,8 +439,8 @@
 .ab-approach__cols p {
   margin: 0;
   color: #e4e4e4;
-  font-size: clamp(17px, 1.7vw, 30px);
-  line-height: 1.5;
+  font-size: var(--lede-size);
+  line-height: var(--lede-lh);
 }
 
 /* ---------- 6. Industry cards ---------- */
@@ -460,15 +460,15 @@
 }
 .ab-industries__head h2 {
   margin: 0;
-  font: 600 clamp(28px, min(3.5vw, 7.5vh), 64px) / 1.08 var(--ab-head);
-  letter-spacing: -0.035em;
+  font: var(--head-weight) var(--h2-size) / var(--head-lh) var(--font-sans);
+  letter-spacing: var(--head-track);
 }
 .ab-industries__head p:last-child {
   max-width: 28em;
   margin: 0 0 0.4em;
   color: var(--muted);
-  font-size: clamp(14px, 1.1vw, 18px);
-  line-height: 1.6;
+  font-size: var(--lede-size);
+  line-height: var(--lede-lh);
 }
 
 .ab-gallery {
@@ -511,8 +511,8 @@
 }
 .ab-card h3 {
   margin: 0;
-  font: 600 clamp(22px, 2.1vw, 40px) / 1.05 var(--ab-head);
-  letter-spacing: -0.035em;
+  font: var(--head-weight) var(--h3-size) / 1.25 var(--font-sans);
+  letter-spacing: -0.02em;
 }
 .ab-card p {
   margin: clamp(10px, 1.1vw, 18px) 0 0;
@@ -596,19 +596,12 @@
     grid-template-columns: 1fr;
     gap: 14px;
   }
-  .ab-card h3 {
-    font-size: 26px;
-  }
   .ab-card p {
     font-size: 14px;
   }
   .ab-approach__cols {
     grid-template-columns: 1fr;
     gap: 14px;
-  }
-  .ab-approach__cols p {
-    font-size: 16px;
-    line-height: 1.5;
   }
   /* phone: heading stays clear of the floating nav, copy sits low as one tidy block */
   .ab-approach {
@@ -625,7 +618,6 @@
     background: linear-gradient(180deg, rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.3) 38%, rgba(10, 10, 10, 0.88) 78%);
   }
   .ab-approach__title {
-    font-size: clamp(40px, 12.5vw, 56px);
     transform: none;
   }
   .ab-approach__cols {

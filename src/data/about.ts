@@ -23,25 +23,25 @@ export const SPACE_SLIDES: SpaceSlide[] = [
     title: "Production is the only proof",
     text: "A model in a notebook is a hypothesis. We measure ourselves on systems that stay up, stay accurate, and stay affordable under real load.",
     note: "Measured on uptime, accuracy, unit cost",
-    image: `${IMG}/about/commit-1.jpg`,
+    image: `${IMG}/about/commit-1.jpg?v=nogrid`,
   },
   {
     title: "Governance from day one",
     text: "Policy, evaluation, and audit trails are designed in with the architecture—never retrofitted after an incident forces the conversation.",
     note: "Policy, evals, and audit trails by design",
-    image: `${IMG}/about/commit-2.jpg?v=2`,
+    image: `${IMG}/about/commit-2.jpg?v=nogrid`,
   },
   {
     title: "Own the whole stack",
     text: "Data foundations, platform, application, and enablement sit with one accountable team—so nothing gets lost in the hand-off between vendors.",
     note: "One accountable team, end to end",
-    image: `${IMG}/about/commit-3.jpg`,
+    image: `${IMG}/about/commit-3.jpg?v=nogrid`,
   },
   {
     title: "Leave teams stronger",
     text: "Every engagement ends with your engineers able to extend, debug, and operate what we built together. Dependency is not a business model.",
     note: "Enablement written into every statement of work",
-    image: `${IMG}/about/commit-4.jpg`,
+    image: `${IMG}/about/commit-4.jpg?v=nogrid`,
   },
 ];
 

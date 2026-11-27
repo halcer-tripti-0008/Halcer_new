@@ -1,8 +1,8 @@
 /* Halcer — Insights page (dark hero, light article desk, dark outlook) */
 .insights {
   --in-blue: #0059b3;
-  --in-head: "Manrope", system-ui, sans-serif; /* same family as the home hero */
-  --in-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --in-head: var(--font-sans);
+  --in-mono: var(--font-sans); /* labels in Manrope too, like the hero */
   background: var(--bg);
 }
 .insights svg {
@@ -117,13 +117,31 @@
   background: center / cover no-repeat;
   transition: transform 1.2s var(--ease-out);
 }
+/* looping video over the still poster (the poster shows while it loads, and for reduced motion) */
+.in-featured__video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out);
+}
+.in-featured:hover .in-featured__video {
+  transform: scale(1.04);
+}
+@media (prefers-reduced-motion: reduce) {
+  .in-featured__video {
+    display: none;
+  }
+}
 /* readability shade behind the text (bottom-left), not a decorative gradient */
 .in-featured::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(0deg, rgba(5, 7, 10, 0.85) 0%, rgba(5, 7, 10, 0.25) 55%, rgba(5, 7, 10, 0.1) 100%);
+  background: linear-gradient(0deg, rgba(5, 7, 10, 0.88) 0%, rgba(5, 7, 10, 0.45) 55%, rgba(5, 7, 10, 0.25) 100%);
 }
 .in-featured__body {
   display: flex;
@@ -138,14 +156,14 @@
 }
 .in-featured h2 {
   margin: 0;
-  font: 500 clamp(28px, 3.3vw, 54px) / 1.1 var(--in-head);
-  letter-spacing: -0.04em;
+  font: var(--head-weight) var(--h2-size) / var(--head-lh) var(--font-sans);
+  letter-spacing: var(--head-track);
 }
 .in-featured__text {
   max-width: 38em;
   color: rgba(255, 255, 255, 0.85);
-  font-size: clamp(14px, 1.05vw, 17px);
-  line-height: 1.55;
+  font-size: var(--lede-size);
+  line-height: var(--lede-lh);
 }
 .in-featured__meta {
   color: rgba(255, 255, 255, 0.7);
@@ -187,15 +205,15 @@
 }
 .in-desk__head h2 {
   margin: 0;
-  font: 500 clamp(24px, 2.2vw, 36px) / 1.1 var(--in-head);
-  letter-spacing: -0.035em;
+  font: var(--head-weight) var(--h2-size) / var(--head-lh) var(--font-sans);
+  letter-spacing: var(--head-track);
 }
 .in-desk__head > p {
   max-width: 24em;
   margin: 0;
   color: #666;
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: var(--lede-size);
+  line-height: var(--lede-lh);
   text-align: right;
 }
 
@@ -245,7 +263,7 @@
 }
 .in-card__title h3 {
   margin: 0;
-  font: 600 clamp(18px, 1.45vw, 22px) / 1.3 var(--in-head);
+  font: var(--head-weight) var(--h3-size) / 1.25 var(--font-sans);
   letter-spacing: -0.02em;
 }
 .in-card__title svg {
@@ -258,8 +276,8 @@
 .in-card__text {
   margin: 10px 0 0;
   color: #666;
-  font-size: 15px;
-  line-height: 1.55;
+  font-size: var(--lede-size);
+  line-height: var(--lede-lh);
 }
 .in-card__meta {
   display: flex;
@@ -344,15 +362,15 @@
 .in-outlook h2 {
   max-width: 11em;
   margin: 0 0 24px;
-  font: 700 clamp(30px, 3.6vw, 60px) / 1.04 var(--in-head);
-  letter-spacing: -0.045em;
+  font: var(--head-weight) var(--h2-size) / var(--head-lh) var(--font-sans);
+  letter-spacing: var(--head-track);
 }
 .in-outlook__copy > p:not(.in-eyebrow) {
   max-width: 34em;
   margin: 0 0 22px;
   color: var(--soft);
-  line-height: 1.6;
-  font-size: clamp(14px, 1.1vw, 17px);
+  font-size: var(--lede-size);
+  line-height: var(--lede-lh);
 }
 .in-outlook blockquote {
   max-width: 32em;
@@ -360,8 +378,8 @@
   padding-left: 18px;
   border-left: 2px solid var(--in-blue);
   color: var(--muted);
-  font-size: clamp(13px, 1vw, 15px);
-  line-height: 1.6;
+  font-size: var(--lede-size);
+  line-height: var(--lede-lh);
 }
 .in-cta {
   display: inline-flex;
@@ -447,39 +465,6 @@
   }
   .in-featured {
     min-height: 460px;
-  }
-}
-
-/* Desktop header over the light page top (the dark hero was removed): dark logo, light menu pill.
-   Scoped with :has() because Next keeps page CSS loaded after client-side navigation. */
-@media (min-width: 901px) {
-  body:has(main.insights) .nav .brand,
-  body:has(main.insights) .nav .brand-mark {
-    color: #0a0a0a;
-  }
-  body:has(main.insights) .nav-links {
-    border-color: rgba(10, 10, 10, 0.08);
-    background: #e8e9ec; /* light grey menu pill */
-    box-shadow: none;
-  }
-  body:has(main.insights) .nav-links a {
-    color: #4a4a4a;
-  }
-  body:has(main.insights) .nav-links a.is-active,
-  body:has(main.insights) .nav-links a.is-hover {
-    color: #fff;
-  }
-  body:has(main.insights) .nav-links__indicator {
-    background: #0a0a0a;
-  }
-  body:has(main.insights) .nav-links.is-hovering .nav-links__indicator {
-    background: var(--accent);
-  }
-  /* "Contact us" matches the light grey menu pill (blue fill on hover is unchanged) */
-  body:has(main.insights) .nav-actions .btn--light {
-    border: 1px solid rgba(10, 10, 10, 0.08);
-    background: #e8e9ec;
-    box-shadow: none;
   }
 }
 

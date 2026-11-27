@@ -25,7 +25,8 @@ export const LEAD_STORY = {
   title: "How a delivery team rebuilt without burning out engineers",
   text: "A technology services company redesigned architecture and delivery around production outcomes — and restored trust in the work.",
   cta: "Read full story",
-  image: `${IMG}/insights/lead.jpg`,
+  image: `${IMG}/insights/featured-poster.jpg`, // sharp still from the video (also used on cards/article)
+  video: "/assets/video/insights-featured.mp4", // looping background on the Insights featured card
 };
 
 export interface Brief {

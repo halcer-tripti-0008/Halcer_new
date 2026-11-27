@@ -23,6 +23,17 @@
   --ease-out: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --ease-soft: cubic-bezier(0.33, 0, 0.2, 1); /* gentle ease for fades and colour changes */
+
+  /* Type scale, taken from the home hero and shared by every page */
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --head-weight: 500;
+  --head-track: -0.045em;
+  --head-lh: 1.08;
+  --h1-size: clamp(44px, 4.9vw, 100px); /* page titles = home hero headline */
+  --h2-size: clamp(32px, 3.4vw, 64px); /* section headings */
+  --h3-size: clamp(19px, 1.5vw, 25px); /* card / sub headings */
+  --lede-size: clamp(14px, 1.08vw, 19px); /* paragraphs = home hero paragraph */
+  --lede-lh: 1.55;
 }
 
 * {
@@ -536,10 +547,10 @@ a:focus-visible .roll > span {
 
 .headline {
   margin: 0;
-  font-size: clamp(44px, 4.9vw, 100px);
-  line-height: 1.08;
-  font-weight: 500;
-  letter-spacing: -0.045em;
+  font-size: var(--h1-size);
+  line-height: var(--head-lh);
+  font-weight: var(--head-weight);
+  letter-spacing: var(--head-track);
 }
 
 .headline .line {
@@ -571,8 +582,8 @@ a:focus-visible .roll > span {
   max-width: 30em;
   margin: clamp(22px, 5.5vh, 64px) 0 0;
   color: var(--muted);
-  font-size: clamp(14px, 1.08vw, 19px);
-  line-height: 1.55;
+  font-size: var(--lede-size);
+  line-height: var(--lede-lh);
   font-weight: 400;
 }
 
@@ -672,6 +683,76 @@ a:focus-visible .roll > span {
 
   .headline {
     font-size: clamp(44px, 6.6vw, 80px);
+  }
+}
+
+/* Desktop: the header stays at the top while scrolling. Transparent at the very top of the page (as
+   designed); once the page moves it sits on a rounded glass bar. useNavShade sets data-scrolled, and
+   data-shade="light" over light sections so the bar, logo and menu turn light with dark text. */
+@media (min-width: 901px) {
+  .nav {
+    position: fixed;
+    z-index: 100;
+    top: clamp(6px, 1.3vw, 22px);
+    padding: 8px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    transition:
+      background-color 0.45s var(--ease-soft),
+      border-color 0.45s var(--ease-soft),
+      box-shadow 0.45s var(--ease-soft),
+      backdrop-filter 0.45s var(--ease-soft);
+  }
+
+  .nav[data-scrolled] {
+    border-color: var(--glass-border);
+    background: rgba(12, 12, 14, 0.78);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 14px 36px -20px rgba(0, 0, 0, 0.7);
+  }
+
+  .nav[data-scrolled][data-shade="light"] {
+    border-color: rgba(10, 10, 10, 0.08);
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 14px 36px -22px rgba(10, 10, 10, 0.35);
+  }
+
+  /* Light shade: dark logo, light grey menu pill and Contact button (the Insights look) */
+  .nav[data-shade="light"] .brand,
+  .nav[data-shade="light"] .brand-mark {
+    color: #0a0a0a;
+  }
+  .nav[data-shade="light"] .nav-links {
+    border-color: rgba(10, 10, 10, 0.08);
+    background: #e8e9ec;
+  }
+  .nav[data-shade="light"] .nav-links a {
+    color: #4a4a4a;
+  }
+  .nav[data-shade="light"] .nav-links a.is-active,
+  .nav[data-shade="light"] .nav-links a.is-hover {
+    color: #fff;
+  }
+  .nav[data-shade="light"] .nav-links__indicator {
+    background: #0a0a0a;
+  }
+  .nav[data-shade="light"] .nav-links.is-hovering .nav-links__indicator {
+    background: var(--accent);
+  }
+  .nav[data-shade="light"] .nav-actions .btn--light {
+    border: 1px solid rgba(10, 10, 10, 0.08);
+    background: #e8e9ec;
+    box-shadow: none;
+  }
+  /* (.brand and .nav-links keep their load-reveal transition, so only their children animate colour) */
+  .brand-mark,
+  .nav-links a,
+  .nav-actions .btn--light {
+    transition:
+      color 0.45s var(--ease-soft),
+      background-color 0.45s var(--ease-soft),
+      border-color 0.45s var(--ease-soft);
   }
 }
 

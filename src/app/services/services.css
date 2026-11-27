@@ -2,7 +2,7 @@
 .services {
   --sv-blue: #0059b3;
   --sv-cream: #f6f6f0;
-  --sv-head: "Manrope", system-ui, sans-serif;
+  --sv-head: var(--font-sans);
   background: #030303;
   color: #fff;
 }
@@ -17,7 +17,12 @@
   padding: calc(var(--nav-h) + 40px) var(--pad) clamp(150px, 22vh, 230px);
   overflow: hidden;
   text-align: center;
-  background: #030303;
+  /* City photo, darkened so the white headline and logos stay readable; the bottom blends into the page black */
+  background:
+    linear-gradient(180deg, transparent 60%, #030303 100%),
+    linear-gradient(rgba(3, 3, 3, 0.64), rgba(3, 3, 3, 0.64)),
+    url("/assets/images/services-hero.jpg") center / cover no-repeat,
+    #030303;
 }
 /* soft dark ribbons drifting behind the headline */
 .sv-hero__art i {
@@ -31,7 +36,7 @@
   animation: sv-drift 26s ease-in-out infinite alternate;
 }
 .sv-hero__art i:nth-child(1) { width: 130vw; height: 62vw; --r: -14deg; }
-.sv-hero__art i:nth-child(2) { width: 95vw; height: 46vw; --r: 12deg; border-color: rgba(0, 89, 179, 0.1); animation-duration: 34s; }
+.sv-hero__art i:nth-child(2) { width: 95vw; height: 46vw; --r: 12deg; border-color: rgba(255, 255, 255, 0.035); animation-duration: 34s; }
 .sv-hero__art i:nth-child(3) { width: 70vw; height: 90vw; --r: 24deg; border-color: rgba(255, 255, 255, 0.025); animation-duration: 42s; }
 @keyframes sv-drift {
   to { transform: translate(-50%, -50%) rotate(calc(var(--r, 0deg) + 9deg)) scale(1.05); }
@@ -45,8 +50,8 @@
 .sv-hero h1 {
   max-width: 14em;
   margin: 0;
-  font: 600 clamp(38px, 5.8vw, 108px) / 1.02 var(--sv-head);
-  letter-spacing: -0.045em;
+  font: var(--head-weight) var(--h1-size) / var(--head-lh) var(--font-sans);
+  letter-spacing: var(--head-track);
 }
 .sv-hero h1 em {
   white-space: nowrap;
@@ -57,8 +62,8 @@
   max-width: 34em;
   margin: clamp(20px, 3.2vw, 46px) 0 0;
   color: #a9adb3;
-  font-size: clamp(14px, 1.25vw, 22px);
-  line-height: 1.55;
+  font-size: var(--lede-size);
+  line-height: var(--lede-lh);
 }
 .sv-cta {
   display: inline-flex;
@@ -77,7 +82,7 @@
 .sv-cta:hover {
   background: #0a6fd6;
   transform: translateY(-3px);
-  box-shadow: 0 18px 40px -14px rgba(0, 89, 179, 0.9);
+  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.6);
 }
 .sv-cta:active {
   transform: scale(0.97);
@@ -221,16 +226,16 @@
 }
 .sx__copy h2 {
   margin: 0;
-  font: 500 clamp(26px, 3vw, 54px) / 1.08 var(--sv-head);
-  letter-spacing: -0.035em;
+  font: var(--head-weight) var(--h2-size) / var(--head-lh) var(--font-sans);
+  letter-spacing: var(--head-track);
 }
 .sx__body {
   max-width: 34em;
 }
 .sx__body p {
   margin: 0;
-  font-size: clamp(14px, 1.2vw, 21px);
-  line-height: 1.6;
+  font-size: var(--lede-size);
+  line-height: var(--lede-lh);
   opacity: 0.78;
 }
 .sx__body .sx__bullets {
@@ -277,20 +282,23 @@
   isolation: isolate;
 }
 .sv-tile--talk {
+  /* dark curve artwork; a light shade at the bottom-left keeps "Get in touch" crisp */
   background:
-    radial-gradient(ellipse 70% 90% at 100% 100%, rgba(26, 115, 232, 0.55), transparent 65%),
-    #061326;
+    linear-gradient(20deg, rgba(0, 0, 0, 0.45), transparent 55%),
+    url("/assets/images/services-talk.jpg") center / cover no-repeat,
+    #111214;
   transition: transform 0.6s var(--ease-out), box-shadow 0.6s;
 }
 .sv-tile--photo {
-  background: #0a1a30 var(--photo) center / cover no-repeat;
+  background: #0a0a0a var(--photo) center / cover no-repeat;
 }
 .sv-tile--photo::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(200deg, rgba(0, 89, 179, 0.15), rgba(4, 14, 30, 0.88) 85%);
+  /* neutral shade so the text stays readable on the photo (no blue tint) */
+  background: linear-gradient(200deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.82) 85%);
   transition: opacity 0.5s;
 }
 .sv-tile:hover {
@@ -304,8 +312,8 @@
   gap: 16px;
 }
 .sv-tile__title {
-  font: 600 clamp(32px, 4vw, 72px) / 1 var(--sv-head);
-  letter-spacing: -0.045em;
+  font: var(--head-weight) var(--h2-size) / var(--head-lh) var(--font-sans);
+  letter-spacing: var(--head-track);
 }
 .sv-tile__go {
   display: grid;
@@ -380,9 +388,6 @@
     padding-top: calc(var(--nav-h) + 56px);
     padding-bottom: 170px;
   }
-  .sv-hero h1 {
-    font-size: clamp(34px, 10.4vw, 52px);
-  }
   .sv-logos li {
     width: 130px;
   }
@@ -446,10 +451,7 @@
 }
 .sv-domains {
   padding: clamp(70px, 10vw, 150px) var(--pad);
-  background:
-    radial-gradient(ellipse 45% 55% at 0% 0%, rgba(0, 89, 179, 0.28), transparent 70%),
-    radial-gradient(ellipse 40% 50% at 100% 100%, rgba(0, 89, 179, 0.16), transparent 70%),
-    #05070b;
+  background: #0a0a0a; /* neutral black, no blue tint */
 }
 .sv-domains__head {
   display: grid;
@@ -468,8 +470,8 @@
 }
 .sv-domains h2 {
   margin: 0;
-  font: 600 clamp(32px, 4.2vw, 76px) / 1.05 var(--sv-head);
-  letter-spacing: -0.045em;
+  font: var(--head-weight) var(--h2-size) / var(--head-lh) var(--font-sans);
+  letter-spacing: var(--head-track);
 }
 .sv-domains h2 em {
   color: #3b8bde;
@@ -478,9 +480,9 @@
 .sv-domains__head > p {
   max-width: 30em;
   margin: 0;
-  color: #8f959e;
-  font-size: clamp(14px, 1.15vw, 19px);
-  line-height: 1.6;
+  color: #8f8f8f;
+  font-size: var(--lede-size);
+  line-height: var(--lede-lh);
 }
 .sv-domains__grid {
   display: grid;
@@ -500,7 +502,7 @@
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 6px;
-  background: #0d1118;
+  background: #141414;
   transition: transform 0.55s var(--ease-out), border-color 0.4s, background 0.4s, box-shadow 0.55s;
 }
 .sv-dom__plus {
@@ -520,7 +522,7 @@
   top: 50%;
   width: 12px;
   height: 1.5px;
-  background: #aab1bb;
+  background: #b0b0b0;
   transform: translate(-50%, -50%);
   transition: background 0.3s;
 }
@@ -530,8 +532,8 @@
 .sv-dom h3 {
   margin: 0 0 auto; /* title leads the card now that the numbers are gone */
   padding-right: 48px; /* keep clear of the + button */
-  font: 600 clamp(20px, 1.8vw, 30px) / 1.15 var(--sv-head);
-  letter-spacing: -0.03em;
+  font: var(--head-weight) var(--h3-size) / 1.25 var(--font-sans);
+  letter-spacing: -0.02em;
 }
 .sv-dom__tags {
   display: flex;
@@ -546,7 +548,7 @@
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.05);
-  color: #98a0ab;
+  color: #a0a0a0;
   font: 600 clamp(9px, 0.72vw, 11px) var(--sv-head);
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -554,9 +556,9 @@
 }
 .sv-dom:hover {
   transform: translateY(-6px);
-  border-color: rgba(59, 139, 222, 0.55);
-  background: #0f1622;
-  box-shadow: 0 30px 60px -34px rgba(0, 89, 179, 0.8);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: #1a1a1a;
+  box-shadow: 0 30px 60px -34px rgba(0, 0, 0, 0.85);
 }
 .sv-dom:hover .sv-dom__plus {
   transform: rotate(90deg);
@@ -568,9 +570,9 @@
   background: #fff;
 }
 .sv-dom:hover .sv-dom__tags li {
-  background: rgba(59, 139, 222, 0.14);
-  border-color: rgba(59, 139, 222, 0.35);
-  color: #cfe3fb;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #f0f0f0;
 }
 @media (max-width: 960px) {
   .sv-domains__head {

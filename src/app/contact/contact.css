@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .contact {
-  --ct-head: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --ct-head: var(--font-sans);
   --ct-w: min(100%, 1120px);
   --ct-blue: #0059b3;
   --ct-ink: #0a0a0a;
@@ -22,8 +22,8 @@
 
 .ct-title {
   margin: 0 0 clamp(28px, 4vw, 56px);
-  font: 700 clamp(38px, 4.4vw, 76px) / 1.05 var(--ct-head);
-  letter-spacing: -0.04em;
+  font: var(--head-weight) var(--h1-size) / var(--head-lh) var(--font-sans);
+  letter-spacing: var(--head-track);
 }
 
 .ct-grid {
@@ -41,15 +41,15 @@
 .ct-form__title,
 .ct-info h3 {
   margin: 0;
-  font: 600 clamp(15px, 1.15vw, 19px) / 1.3 var(--ct-head);
-  letter-spacing: -0.01em;
+  font: var(--head-weight) var(--h3-size) / 1.25 var(--font-sans);
+  letter-spacing: -0.02em;
 }
 .ct-form__intro,
 .ct-info p {
   margin: 8px 0 0;
   color: var(--ct-mute);
-  font-size: clamp(12px, 0.9vw, 14px);
-  line-height: 1.55;
+  font-size: var(--lede-size);
+  line-height: var(--lede-lh);
 }
 .ct-form__intro {
   margin-bottom: clamp(18px, 2vw, 28px);
@@ -184,8 +184,8 @@
 }
 .ct-sent h3 {
   margin: 6px 0 0;
-  font: 600 clamp(24px, 2.2vw, 36px) / 1.1 var(--ct-head);
-  letter-spacing: -0.03em;
+  font: var(--head-weight) var(--h3-size) / 1.25 var(--font-sans);
+  letter-spacing: -0.02em;
 }
 .ct-sent p {
   margin: 0;
@@ -278,8 +278,8 @@
 .ct-faq h2 {
   margin: 0;
   max-width: 6em;
-  font: 700 clamp(32px, 3.6vw, 62px) / 1.12 var(--ct-head);
-  letter-spacing: -0.04em;
+  font: var(--head-weight) var(--h2-size) / var(--head-lh) var(--font-sans);
+  letter-spacing: var(--head-track);
 }
 .ct-faq__lead {
   margin: 0;
@@ -288,8 +288,8 @@
 .ct-faq__text {
   margin: 14px 0 clamp(18px, 2vw, 28px);
   color: var(--ct-mute);
-  font-size: clamp(12px, 0.9vw, 14px);
-  line-height: 1.7;
+  font-size: var(--lede-size);
+  line-height: var(--lede-lh);
 }
 .ct-faq__list details {
   border-bottom: 1px solid var(--ct-line);
@@ -351,8 +351,8 @@
   margin: 0;
   padding: 0 32px 16px 0;
   color: var(--ct-mute);
-  font-size: clamp(12px, 0.9vw, 14px);
-  line-height: 1.65;
+  font-size: var(--lede-size);
+  line-height: var(--lede-lh);
 }
 
 /* ---------- Responsive ---------- */

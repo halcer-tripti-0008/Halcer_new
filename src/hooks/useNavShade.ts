@@ -2,7 +2,6 @@
 
 import { useEffect, type RefObject } from "react";
 
-const MOBILE = "(max-width: 900px)";
 
 /** Parses "rgb(a)" strings; returns null when the colour is transparent or unreadable. */
 function opaqueLuminance(color: string): number | null {
@@ -53,23 +52,20 @@ function photoSource(el: Element): string | null {
 }
 
 /**
- * Phones and tablets only: the sticky nav bar switches between a dark and a light style depending on
- * what is behind it while scrolling. It looks at the page element under the bar, walks up to the first
- * element with a solid background and sets `data-shade="light" | "dark"` on the header.
+ * The sticky nav bar (all screen sizes) switches between a dark and a light style depending on what is
+ * behind it while scrolling. It looks at the page element under the bar, walks up to the first element
+ * with a solid background and sets `data-shade="light" | "dark"` on the header. It also sets
+ * `data-scrolled` once the page has moved, so the desktop bar only gets its glass background then.
  */
 export function useNavShade(navRef: RefObject<HTMLElement | null>) {
   useEffect(() => {
     const nav = navRef.current;
     if (!nav) return;
-    const mq = matchMedia(MOBILE);
     let frame = 0;
 
     const update = () => {
       frame = 0;
-      if (!mq.matches) {
-        nav.removeAttribute("data-shade");
-        return;
-      }
+      nav.toggleAttribute("data-scrolled", scrollY > 8);
       const box = nav.getBoundingClientRect();
       const x = innerWidth / 2;
       const y = box.top + box.height / 2;
@@ -109,6 +105,7 @@ export function useNavShade(navRef: RefObject<HTMLElement | null>) {
       removeEventListener("scroll", schedule);
       removeEventListener("resize", schedule);
       nav.removeAttribute("data-shade");
+      nav.removeAttribute("data-scrolled");
     };
   }, [navRef]);
 }
