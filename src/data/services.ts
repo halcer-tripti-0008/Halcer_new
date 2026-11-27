@@ -1,58 +1,69 @@
-/** Services page content, taken from the design screenshot. */
-export interface ServiceLine {
-  n: string;
-  title: string;
-  tags: string[];
-  text: string;
-  icon: "spark" | "code" | "shield" | "box";
-}
-
+/** Services page content (copy from the live Halcer services page). */
 export const SERVICES_HERO = {
-  eyebrow: "Services",
-  title: ["Architecture, engineering,", "and delivery composed as"],
+  title: "Architecture, engineering, and delivery composed as",
   accent: "one practice.",
   lede: "For organisations advancing AI, GenAI, and cutting-edge technology. Nothing adjacent. Nothing generic.",
-  steps: ["Architect", "Build", "Operate"],
   cta: "Speak with a specialist",
-  link: "How we enter the work",
 };
 
-export const SERVICE_LINES: ServiceLine[] = [
+const IMG = "/assets/images";
+
+export type ServiceTone = "white" | "grey" | "black" | "blue";
+
+export interface Service {
+  id: string;
+  tab: string;
+  title: string;
+  text: string;
+  bullets: string[];
+  image: string;
+  /** CSS object-position for the picture (optional). */
+  focus?: string;
+  tone: ServiceTone;
+}
+
+export const SERVICES: Service[] = [
   {
-    n: "01",
+    id: "ai-genai-engineering",
+    tab: "AI & GenAI engineering",
     title: "AI & GenAI engineering",
-    tags: ["LLM applications", "Retrieval & RAG", "Evaluation", "MLOps"],
     text: "LLM applications, retrieval, evaluation, MLOps, and AI product work — built against production outcomes, not a demo that expires.",
-    icon: "spark",
+    bullets: ["LLM applications", "Retrieval & RAG", "Evaluation", "MLOps"],
+    image: `${IMG}/about/hero-photo.jpg`,
+    tone: "white",
   },
   {
-    n: "02",
+    id: "software-platforms",
+    tab: "Software & platforms",
     title: "Software & platforms",
-    tags: ["Product engineering", "Architecture", "Quality", "DevOps & SRE"],
     text: "Product engineering, architecture, quality, DevOps, and SRE for systems that have to run under load.",
-    icon: "code",
+    bullets: ["Product engineering", "Architecture", "Quality", "DevOps & SRE"],
+    image: `${IMG}/industries/software.jpg`,
+    tone: "grey",
   },
   {
-    n: "03",
+    id: "cloud-data-security",
+    tab: "Cloud, data & security",
     title: "Cloud, data & security",
-    tags: ["Cloud architecture", "Data platforms", "Identity", "Cybersecurity"],
     text: "Cloud architecture, data platforms, identity, and cybersecurity — the cutting-edge stack AI programmes sit on.",
-    icon: "shield",
+    bullets: ["Cloud architecture", "Data platforms", "Identity", "Cybersecurity"],
+    image: `${IMG}/insights/brief-2.jpg`,
+    tone: "black",
   },
   {
-    n: "04",
+    id: "digital-delivery",
+    tab: "Digital delivery",
     title: "Digital delivery",
-    tags: ["Modernisation", "Delivery pods", "Data estates", "GenAI workflows"],
     text: "Project teams that modernise products, platforms, and data estates — or stand up the first production GenAI workflow.",
-    icon: "box",
+    bullets: ["Modernisation", "Delivery pods", "Data estates", "GenAI workflows"],
+    image: `${IMG}/projects/photo.jpg`,
+    tone: "blue",
   },
 ];
 
-export const ENGAGE = {
-  eyebrow: "How we engage",
-  title: "Four ways we",
-  accent: "enter the work.",
-  text: "We design around how technology organisations actually ship — product pods, platform teams, and AI programmes — not a catalogue of unrelated industries.",
+export const SERVICES_FOOT = {
+  talk: { label: "Bring us the hard part.", title: "Get in touch", href: "/contact" },
+  team: { label: "Join our team", title: "Careers", href: "#", image: `${IMG}/who/who-photo.jpg` },
 };
 
 export const DOMAINS_HEAD = {
@@ -70,12 +81,3 @@ export const DOMAINS = [
   { n: "05", title: "AI & GenAI", tags: ["LLM applications", "RAG", "Evaluation", "MLOps"] },
   { n: "06", title: "High-tech product", tags: ["SaaS", "Enterprise technology", "Programme delivery"] },
 ];
-
-export const SERVICES_CTA = {
-  eyebrow: "Work with Halcer",
-  title: "Bring us the hard part.",
-  accent: "We will bring the specialists.",
-  text: "A stalled GenAI pilot, a platform that buckles under load, or a security bar you have to clear. Tell us what you are shipping and we will put the right practice around it.",
-  button: "Speak with a specialist",
-  email: "hello@halcer.com",
-};

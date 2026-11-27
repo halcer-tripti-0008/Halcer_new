@@ -29,7 +29,7 @@ export const SPACE_SLIDES: SpaceSlide[] = [
     title: "Governance from day one",
     text: "Policy, evaluation, and audit trails are designed in with the architecture—never retrofitted after an incident forces the conversation.",
     note: "Policy, evals, and audit trails by design",
-    image: `${IMG}/about/commit-2.jpg`,
+    image: `${IMG}/about/commit-2.jpg?v=2`,
   },
   {
     title: "Own the whole stack",

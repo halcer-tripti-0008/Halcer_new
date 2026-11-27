@@ -1517,6 +1517,22 @@ a:focus-visible .roll > span {
   transform: translate3d(0, -4px, 0);
 }
 
+/* Desktop: same equal-visual-weight sizing as on phones. Every logo gets the same area
+   (width = s * sqrt(ratio)), capped in height (tall marks) and in width (long wordmarks), and sits
+   vertically centred on its row, so none looks bigger or smaller than the rest. */
+@media (min-width: 901px) {
+  .clients__grid li {
+    display: grid;
+    align-items: center;
+    min-height: clamp(70px, 6.4vw, 96px);
+  }
+  .clients__logo {
+    --s: clamp(58px, 5.3vw, 80px);
+    width: min(calc(var(--s) * var(--w)), calc(var(--s) * 0.85 * var(--ar)), 100%);
+    aspect-ratio: var(--ar);
+  }
+}
+
 @media (max-width: 900px) {
   .clients__grid {
     grid-template-columns: repeat(3, 1fr);
