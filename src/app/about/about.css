@@ -63,31 +63,31 @@
 .ab-hero .lede strong {
   color: #0a0a0a;
 }
-/* Desktop nav sits on the white intro: dark logo, links and pill. */
+/* Desktop nav sits on the white intro: dark logo, links and pill (only while the bar is over a light area). */
 @media (min-width: 901px) {
-  body:has(.ab-hero) .nav .brand,
-  body:has(.ab-hero) .nav .brand span,
-  body:has(.ab-hero) .nav .brand-mark {
+  body:has(.ab-hero) .nav:not([data-shade="dark"]) .brand,
+  body:has(.ab-hero) .nav:not([data-shade="dark"]) .brand span,
+  body:has(.ab-hero) .nav:not([data-shade="dark"]) .brand-mark {
     color: #0a0a0a;
   }
-  body:has(.ab-hero) .nav-links {
+  body:has(.ab-hero) .nav:not([data-shade="dark"]) .nav-links {
     background: rgba(10, 10, 10, 0.05);
     border-color: rgba(10, 10, 10, 0.12);
   }
-  body:has(.ab-hero) .nav-links a {
+  body:has(.ab-hero) .nav:not([data-shade="dark"]) .nav-links a {
     color: #444;
   }
-  body:has(.ab-hero) .nav-links a.is-active,
-  body:has(.ab-hero) .nav-links a.is-hover {
+  body:has(.ab-hero) .nav:not([data-shade="dark"]) .nav-links a.is-active,
+  body:has(.ab-hero) .nav:not([data-shade="dark"]) .nav-links a.is-hover {
     color: #fff;
   }
-  body:has(.ab-hero) .nav-links__indicator {
+  body:has(.ab-hero) .nav:not([data-shade="dark"]) .nav-links__indicator {
     background: #0a0a0a;
   }
-  body:has(.ab-hero) .nav-links.is-hovering .nav-links__indicator {
+  body:has(.ab-hero) .nav:not([data-shade="dark"]) .nav-links.is-hovering .nav-links__indicator {
     background: #0059b3;
   }
-  body:has(.ab-hero) .nav-actions .btn--light {
+  body:has(.ab-hero) .nav:not([data-shade="dark"]) .nav-actions .btn--light {
     border: 1px solid rgba(10, 10, 10, 0.12);
     box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.35);
   }
@@ -502,6 +502,9 @@
   position: absolute;
   inset: 0;
   z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: transform 1.4s var(--ab-ease);
 }
 .ab-card__body {
@@ -595,6 +598,23 @@
   .ab-gallery {
     grid-template-columns: 1fr;
     gap: 14px;
+  }
+  /* phones: shorter cards so the picture fills them, with the text over its lower part */
+  .ab-card {
+    aspect-ratio: 1 / 1.1;
+  }
+  .ab-card img {
+    object-position: top;
+  }
+  .ab-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, transparent 38%, rgba(0, 0, 0, 0.88) 92%);
+  }
+  .ab-card h3 {
+    font-size: 26px;
   }
   .ab-card p {
     font-size: 14px;

@@ -252,3 +252,56 @@
     display: none;
   }
 }
+
+/* Phones */
+@media (max-width: 620px) {
+  .ar-wrap {
+    padding-top: calc(var(--nav-h) + 32px);
+    padding-bottom: 56px;
+  }
+  .ar-crumb {
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+    font-size: 13px;
+  }
+  .ar-title {
+    font-size: clamp(26px, 7.5vw, 34px);
+    overflow-wrap: anywhere;
+  }
+  .ar-grid {
+    gap: 24px;
+    margin-top: 24px;
+  }
+  .ar-side {
+    gap: 18px 28px;
+    padding-bottom: 20px;
+  }
+  .ar-img {
+    border-radius: 14px;
+  }
+  .ar-body {
+    margin-top: 28px;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-wrap: break-word;
+  }
+  .ar-body h2 {
+    font-size: 20px;
+  }
+  .ar-closing {
+    padding-left: 14px;
+  }
+  .ar-latest {
+    padding: 56px var(--pad);
+  }
+  .ar-latest__head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .ar-latest__all {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}

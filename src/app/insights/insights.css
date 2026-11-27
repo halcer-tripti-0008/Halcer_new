@@ -474,3 +474,84 @@
     background: rgba(232, 233, 236, 0.92);
   }
 }
+
+/* Phones: tighter spacing, readable type, no horizontal overflow */
+@media (max-width: 620px) {
+  .in-desk {
+    padding-top: calc(var(--nav-h) + 28px);
+  }
+  .in-featured {
+    min-height: clamp(420px, 120vw, 520px);
+    border-radius: 16px;
+  }
+  .in-featured__body {
+    gap: 10px;
+    padding: 22px 20px;
+  }
+  .in-featured__tag {
+    font-size: 13px;
+  }
+  .in-featured h2 {
+    font-size: clamp(24px, 7vw, 30px);
+    overflow-wrap: anywhere;
+  }
+  .in-featured__text {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 14px;
+  }
+  .in-featured__meta,
+  .in-card__meta {
+    flex-wrap: wrap;
+    font-size: 12px;
+  }
+  .in-desk__head {
+    margin: 40px 0 22px;
+    gap: 10px;
+  }
+  .in-grid {
+    gap: 36px;
+  }
+  .in-card__topic {
+    margin-top: 16px;
+  }
+  .in-card__title h3 {
+    font-size: 19px;
+    overflow-wrap: anywhere;
+  }
+  .in-card__text {
+    font-size: 14px;
+  }
+  .in-more__btn {
+    width: 100%;
+  }
+  .in-outlook {
+    gap: 28px;
+    padding: 52px var(--pad);
+  }
+  .in-outlook h2 {
+    max-width: none;
+    margin-bottom: 18px;
+  }
+  .in-cta {
+    justify-content: center;
+    width: 100%;
+    min-height: 48px;
+  }
+}
+
+/* Touch screens: no hover-only zoom/shift effects stuck after a tap */
+@media (hover: none) {
+  .in-featured:hover .in-featured__bg,
+  .in-card__link:hover .in-card__img span,
+  .in-outlook__img:hover span {
+    transform: none;
+    filter: none;
+  }
+  .in-card__link:hover .in-card__title svg {
+    transform: none;
+    color: inherit;
+  }
+}
