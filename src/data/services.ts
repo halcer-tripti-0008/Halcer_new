@@ -29,7 +29,8 @@ export const SERVICES: Service[] = [
     title: "AI & GenAI engineering",
     text: "LLM applications, retrieval, evaluation, MLOps, and AI product work — built against production outcomes, not a demo that expires.",
     bullets: ["LLM applications", "Retrieval & RAG", "Evaluation", "MLOps"],
-    image: `${IMG}/about/hero-photo.jpg`,
+    image: `${IMG}/services-ai.jpg`,
+    focus: "50% 38%",
     tone: "white",
   },
   {
@@ -38,7 +39,7 @@ export const SERVICES: Service[] = [
     title: "Software & platforms",
     text: "Product engineering, architecture, quality, DevOps, and SRE for systems that have to run under load.",
     bullets: ["Product engineering", "Architecture", "Quality", "DevOps & SRE"],
-    image: `${IMG}/industries/software.jpg`,
+    image: `${IMG}/services-software.svg`,
     tone: "grey",
   },
   {
@@ -47,7 +48,8 @@ export const SERVICES: Service[] = [
     title: "Cloud, data & security",
     text: "Cloud architecture, data platforms, identity, and cybersecurity — the cutting-edge stack AI programmes sit on.",
     bullets: ["Cloud architecture", "Data platforms", "Identity", "Cybersecurity"],
-    image: `${IMG}/insights/brief-2.jpg`,
+    image: `${IMG}/services-cloud.jpg`,
+    focus: "50% 55%",
     tone: "black",
   },
   {
@@ -56,7 +58,8 @@ export const SERVICES: Service[] = [
     title: "Digital delivery",
     text: "Project teams that modernise products, platforms, and data estates — or stand up the first production GenAI workflow.",
     bullets: ["Modernisation", "Delivery pods", "Data estates", "GenAI workflows"],
-    image: `${IMG}/projects/photo.jpg`,
+    image: `${IMG}/services-delivery.jpg`,
+    focus: "50% 40%",
     tone: "blue",
   },
 ];

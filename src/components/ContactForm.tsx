@@ -3,16 +3,37 @@
 import { useState, type FormEvent } from "react";
 import { COUNTRY_CODES, INTERESTS } from "@/data/contact";
 
-/**
- * Message form. PLACEHOLDER: there is no backend yet, so a valid submit only shows the thank-you
- * state. Wire `onSubmit` to the real endpoint (or a server action) before publishing.
- */
+/** Message form: posts to /api/contact, which emails the enquiry to hello@halcer.com. */
 export function ContactForm() {
   const [sent, setSent] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
+    if (busy) return;
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.phone = `${data.dial ?? ""} ${data.phone ?? ""}`.trim();
+    setBusy(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        const j = await res.json().catch(() => ({}));
+        throw new Error(j.error || "Something went wrong.");
+      }
+      form.reset();
+      setSent(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong.");
+    } finally {
+      setBusy(false);
+    }
   };
 
   if (sent) {
@@ -82,12 +103,20 @@ export function ContactForm() {
         <textarea name="message" rows={4} />
       </label>
 
+      {/* honeypot: hidden from people, bots fill it in */}
+      <input className="ct-hp" name="website" type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+
       <div className="ct-form__foot">
-        <button className="ct-submit" type="submit" data-magnetic>
+        {error && (
+          <p className="ct-error" role="alert">
+            {error} You can also email us at <a href="mailto:hello@halcer.com">hello@halcer.com</a>.
+          </p>
+        )}
+        <button className="ct-submit" type="submit" data-magnetic disabled={busy}>
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M5 12h13M13 6l6 6-6 6" />
           </svg>
-          <span>Submit</span>
+          <span>{busy ? "Sending…" : "Submit"}</span>
         </button>
       </div>
     </form>
