@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Cursor } from "@/components/Cursor";
 import { Footer } from "@/components/Footer";
+import { InsightsBriefs } from "@/components/InsightsBriefs";
 import { PageEffects } from "@/components/PageEffects";
 import { SiteHeader } from "@/components/SiteHeader";
-import { BRIEFS, DESK, INSIGHTS_HERO, LEAD_STORY, OUTLOOK } from "@/data/insights";
-import { cssVars } from "@/lib/css";
+import { DESK, INSIGHTS_HERO, LEAD_STORY, OUTLOOK } from "@/data/insights";
 import "./insights.css";
 
 export const metadata: Metadata = {
@@ -20,67 +20,37 @@ const Arrow = () => (
 );
 
 export default function InsightsPage() {
-  const h = INSIGHTS_HERO;
   return (
     <>
       <SiteHeader active="Insights" />
       <main className="insights" data-nav-image>
-        <section className="in-hero">
-          <h1 className="in-hero__title reveal" style={cssVars({ "--d": 0 })}>
-            {h.title}
-          </h1>
-          <p className="in-hero__lede reveal" style={cssVars({ "--d": 1 })}>
-            {h.lede}
-          </p>
-        </section>
-
         <section className="in-desk" id="recent">
+          {/* Page title for screen readers and search engines (the visible page opens on the featured story) */}
+          <h1 className="sr-only">{INSIGHTS_HERO.title}</h1>
+          {/* Featured story: large photo card with the text over it */}
+          <Link href={`/insights/${LEAD_STORY.slug}`} className="in-featured reveal">
+            <span className="in-featured__bg" style={{ backgroundImage: `url(${LEAD_STORY.image})` }} aria-hidden="true" />
+            <span className="in-featured__body">
+              <span className="in-featured__tag">
+                Featured · {LEAD_STORY.section}
+              </span>
+              <h2>{LEAD_STORY.title}</h2>
+              <span className="in-featured__text">{LEAD_STORY.text}</span>
+              <span className="in-featured__meta">
+                {LEAD_STORY.kind} • {LEAD_STORY.date} • {LEAD_STORY.read} read
+              </span>
+            </span>
+            <span className="in-featured__arrow" aria-hidden="true">
+              <Arrow />
+            </span>
+          </Link>
+
           <header className="in-desk__head reveal">
-            <div>
-              <h2>{DESK.heading}</h2>
-            </div>
+            <h2>{DESK.heading}</h2>
             <p>{DESK.note}</p>
           </header>
 
-          <Link href="#" className="in-lead reveal">
-            <span className="in-lead__bg" style={{ backgroundImage: `url(${LEAD_STORY.image})` }} aria-hidden="true" />
-            <div className="in-lead__body">
-              <p className="in-lead__tags">
-                <b>{LEAD_STORY.tag}</b>
-                <i />
-                <span>{LEAD_STORY.section}</span>
-              </p>
-              <p className="in-mono">
-                {LEAD_STORY.kind} / {LEAD_STORY.date} / {LEAD_STORY.read}
-              </p>
-              <h3>{LEAD_STORY.title}</h3>
-              <p className="in-lead__text">{LEAD_STORY.text}</p>
-              <span className="in-read in-read--light">
-                {LEAD_STORY.cta} <Arrow />
-              </span>
-            </div>
-          </Link>
-
-          <div className="in-briefs">
-            {BRIEFS.map((b, i) => (
-              <article key={b.n} className={`in-brief reveal${i % 2 ? " is-flip" : ""}`}>
-                <Link href="#" className="in-brief__img" tabIndex={-1} aria-hidden="true">
-                  <span className="in-brief__pic" style={{ backgroundImage: `url(${b.image})` }} />
-                </Link>
-                <div className="in-brief__body">
-                  <p className="in-mono">
-                    {b.kind} / {b.date} / {b.read}
-                  </p>
-                  {b.topic && <p className="in-brief__topic">{b.topic}</p>}
-                  <h3>{b.title}</h3>
-                  {b.text && <p className="in-brief__text">{b.text}</p>}
-                  <Link href="#" className="in-read">
-                    {b.cta} <Arrow />
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
+          <InsightsBriefs />
         </section>
 
         <section className="in-outlook">

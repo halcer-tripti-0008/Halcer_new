@@ -1,4 +1,4 @@
-/** Insights page content. Images were cropped from the design screenshot (low resolution): swap in the originals. */
+/** Insights page content. Images were cropped from the design screenshot (low resolution, number labels removed): swap in the originals. */
 const IMG = "/assets/images";
 
 export const INSIGHTS_HERO = {
@@ -16,6 +16,7 @@ export const DESK = {
 };
 
 export const LEAD_STORY = {
+  slug: "delivery-team-rebuild-without-burnout",
   tag: "Lead story",
   section: "Delivery",
   kind: "Client story",
@@ -29,6 +30,7 @@ export const LEAD_STORY = {
 
 export interface Brief {
   n: string;
+  slug: string;
   kind: string;
   date: string;
   read: string;
@@ -42,6 +44,7 @@ export interface Brief {
 export const BRIEFS: Brief[] = [
   {
     n: "02",
+    slug: "genai-in-production",
     kind: "Industry brief",
     date: "14 July 2026",
     read: "10 min",
@@ -53,6 +56,7 @@ export const BRIEFS: Brief[] = [
   },
   {
     n: "03",
+    slug: "cloud-security-platforms-decide-delivery",
     kind: "Industry brief",
     date: "21 June 2026",
     read: "9 min",
@@ -60,7 +64,60 @@ export const BRIEFS: Brief[] = [
     cta: "Read full brief",
     image: `${IMG}/insights/brief-2.jpg`,
   },
+  // DRAFT articles revealed by "See more articles": placeholder copy and reused site images — replace with real pieces.
+  {
+    n: "04",
+    slug: "cloud-cost-is-architecture",
+    kind: "Industry brief",
+    date: "2 June 2026",
+    read: "7 min",
+    topic: "Cloud",
+    title: "Cloud cost is an architecture problem, not a finance report",
+    text: "Why FinOps only works when the platform team owns spend alongside reliability — and the three design choices that move the bill most.",
+    cta: "Read full brief",
+    image: `${IMG}/services-cloud.jpg`,
+  },
+  {
+    n: "05",
+    slug: "pilot-to-production-in-one-quarter",
+    kind: "Client story",
+    date: "19 May 2026",
+    read: "6 min",
+    topic: "Delivery",
+    title: "From pilot to production in one quarter: what changed in the operating model",
+    text: "Small pods, one accountable owner per outcome, and release gates the client's security team trusted from day one.",
+    cta: "Read full story",
+    image: `${IMG}/services-delivery.jpg`,
+  },
+  {
+    n: "06",
+    slug: "evaluating-llm-applications",
+    kind: "Industry brief",
+    date: "5 May 2026",
+    read: "8 min",
+    topic: "AI & GenAI",
+    title: "Evaluating LLM applications before your users do",
+    text: "Offline test sets, live guardrails and the metrics that actually predict whether a GenAI feature will hold up in production.",
+    cta: "Read full brief",
+    image: `${IMG}/services-ai.jpg`,
+  },
+  {
+    n: "07",
+    slug: "hiring-for-production-responsibility",
+    kind: "Perspective",
+    date: "22 April 2026",
+    read: "5 min",
+    topic: "Teams",
+    title: "Hiring for production responsibility",
+    text: "What we look for in engineers who own systems end to end — and why it matters more than any single framework on a CV.",
+    cta: "Read full piece",
+    image: `${IMG}/careers/careers-hero.jpg`,
+  },
 ];
+
+/** Articles shown before "See more", and how many each click reveals. */
+export const BRIEFS_INITIAL = 3;
+export const BRIEFS_STEP = 3;
 
 export const OUTLOOK = {
   eyebrow: "Outlook 2026",
