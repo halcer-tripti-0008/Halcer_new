@@ -65,7 +65,7 @@
   align-items: center;
   margin-top: clamp(28px, 4.4vw, 64px);
   padding: clamp(14px, 1.2vw, 20px) clamp(24px, 2.2vw, 40px);
-  border-radius: 4px;
+  border-radius: 999px; /* fully rounded pill (a literal 50% would make the wide button an oval) */
   background: var(--sv-blue);
   color: #fff;
   font: 700 clamp(12px, 0.95vw, 16px) var(--sv-head);
@@ -405,9 +405,7 @@
   letter-spacing: 0.06em;
   text-decoration: none;
   text-transform: uppercase;
-  background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
   padding-bottom: 4px;
-  transition: background-size 0.5s var(--ease-out);
 }
 .sx__more svg {
   width: 15px;
@@ -418,9 +416,6 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   transition: transform 0.45s var(--ease-out);
-}
-.sx__more:hover {
-  background-size: 100% 2px;
 }
 .sx__more:hover svg {
   transform: translateX(5px);
@@ -436,9 +431,6 @@
 }
 .sx__card {
   cursor: pointer;
-}
-.sx__card:hover .sx__more {
-  background-size: 100% 2px;
 }
 .sx__card:hover .sx__more svg {
   transform: translateX(5px);
@@ -511,20 +503,6 @@
   background: #0d1118;
   transition: transform 0.55s var(--ease-out), border-color 0.4s, background 0.4s, box-shadow 0.55s;
 }
-.sv-dom__n {
-  color: #3b8bde;
-  font: 700 clamp(11px, 0.85vw, 14px) var(--sv-head);
-  letter-spacing: 0.2em;
-}
-.sv-dom__big {
-  position: absolute;
-  top: clamp(8px, 1vw, 16px);
-  right: clamp(14px, 1.6vw, 26px);
-  color: rgba(255, 255, 255, 0.045);
-  font: 800 clamp(56px, 6vw, 108px) / 1 var(--sv-head);
-  letter-spacing: -0.04em;
-  transition: color 0.5s, transform 0.7s var(--ease-out);
-}
 .sv-dom__plus {
   position: absolute;
   top: clamp(18px, 1.8vw, 28px);
@@ -550,7 +528,8 @@
   transform: translate(-50%, -50%) rotate(90deg);
 }
 .sv-dom h3 {
-  margin: clamp(30px, 3.4vw, 56px) 0 auto;
+  margin: 0 0 auto; /* title leads the card now that the numbers are gone */
+  padding-right: 48px; /* keep clear of the + button */
   font: 600 clamp(20px, 1.8vw, 30px) / 1.15 var(--sv-head);
   letter-spacing: -0.03em;
 }
@@ -578,10 +557,6 @@
   border-color: rgba(59, 139, 222, 0.55);
   background: #0f1622;
   box-shadow: 0 30px 60px -34px rgba(0, 89, 179, 0.8);
-}
-.sv-dom:hover .sv-dom__big {
-  color: rgba(59, 139, 222, 0.2);
-  transform: translateX(-6px);
 }
 .sv-dom:hover .sv-dom__plus {
   transform: rotate(90deg);

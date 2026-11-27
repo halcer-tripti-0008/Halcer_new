@@ -1,0 +1,683 @@
+/* Halcer — Careers page. Theme: black / white / brand blue, Manrope throughout (set like the home hero). */
+.careers {
+  --cr-blue: #0059b3;
+  --cr-blue-dark: #004080;
+  --cr-blue-text: #3b8bde; /* brand blue lifted for small text on black */
+  --cr-black: #0a0a0a;
+  --cr-card: #111214;
+  --cr-line: rgba(255, 255, 255, 0.09);
+  --cr-ink: #0a0a0a;
+  --cr-grey: #6b6b6b;
+  background: var(--cr-black);
+  color: #fff;
+  font-family: "Manrope", system-ui, sans-serif;
+}
+.careers svg {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.careers h1,
+.careers h2,
+.careers h3 {
+  margin: 0;
+  font-family: "Manrope", system-ui, sans-serif;
+}
+
+/* Small uppercase label (Manrope, not mono, to match the hero) */
+.cr-eyebrow {
+  margin: 0 0 16px;
+  color: var(--cr-blue-text);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Section heading */
+.cr-head {
+  max-width: 46em;
+  margin-bottom: clamp(36px, 5vw, 64px);
+}
+.cr-head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+.cr-head h2,
+.cr-roles__head h2,
+.cr-open h2 {
+  font-size: clamp(28px, 3.4vw, 56px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+.cr-head > p:last-child {
+  max-width: 34em;
+  margin: 18px auto 0;
+  color: var(--cr-grey);
+  font-size: clamp(14px, 1.08vw, 18px);
+  line-height: 1.55;
+}
+
+/* Buttons: brand blue, darker blue on hover (same as the site's blue buttons) */
+.cr-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 26px;
+  min-height: 52px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--cr-blue);
+  color: #fff;
+  font: 600 15px "Manrope", system-ui, sans-serif;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.3s var(--ease-soft);
+}
+.cr-btn svg {
+  transition: transform 0.45s var(--ease-out);
+}
+.cr-btn:hover,
+.cr-btn:focus-visible {
+  background: var(--cr-blue-dark);
+}
+.cr-btn:hover svg,
+.cr-btn:focus-visible svg {
+  transform: translateX(4px);
+}
+.cr-btn--small {
+  min-height: 40px;
+  padding: 0 18px;
+  font-size: 13px;
+}
+
+/* ---------- 1. Hero ---------- */
+.cr-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: min(100svh, 900px);
+  justify-content: center;
+  padding: calc(var(--nav-h) + clamp(60px, 10vh, 120px)) var(--pad) clamp(60px, 9vh, 110px);
+  /* Office photo, darkened so the white text stays readable; the bottom edge blends into the black below. */
+  background:
+    linear-gradient(180deg, transparent 70%, var(--cr-black) 100%),
+    linear-gradient(rgba(10, 10, 10, 0.74), rgba(10, 10, 10, 0.74)),
+    url("/assets/images/careers/careers-hero.jpg") center 62% / cover no-repeat,
+    var(--cr-black);
+  text-align: center;
+}
+.cr-hero__title {
+  max-width: 15em;
+  font-size: clamp(36px, 4.6vw, 88px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+.cr-hero__title em {
+  display: block;
+  color: var(--cr-blue);
+  font-style: normal;
+}
+.cr-hero__lede {
+  max-width: 36em;
+  margin: clamp(20px, 3.5vh, 36px) 0 0;
+  color: var(--muted, #8a8a8a);
+  font-size: clamp(14px, 1.08vw, 19px);
+  line-height: 1.55;
+}
+
+/* Search bar */
+.cr-search {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: 10px;
+  width: min(100%, 1000px);
+  margin-top: clamp(32px, 6vh, 60px);
+  padding: 0;
+  background: transparent; /* fields sit straight on the photo */
+  text-align: left;
+}
+.cr-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.14); /* light grey glass: picks up the photo behind it */
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  transition: border-color 0.3s var(--ease-soft), background 0.3s var(--ease-soft);
+}
+.cr-field:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+.cr-field:focus-within {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.2);
+}
+.cr-field > span:first-child {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.cr-field__input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.75);
+}
+.cr-field input,
+.cr-field select {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #fff;
+  font: 500 15px "Manrope", system-ui, sans-serif;
+}
+.cr-field input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+.cr-field select {
+  appearance: none;
+  padding-right: 22px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
+    right center / 14px no-repeat;
+  cursor: pointer;
+}
+.cr-field select option {
+  background: #fff;
+  color: #0a0a0a;
+}
+.cr-search .cr-btn {
+  min-height: auto;
+  border-radius: 14px;
+  padding: 0 30px;
+}
+
+/* Discipline chips */
+.cr-disciplines {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 14px;
+  margin-top: 26px;
+  color: #7a7a7a;
+  font-size: 12px;
+  font-weight: 500;
+}
+.cr-disciplines ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cr-disciplines button {
+  padding: 7px 14px;
+  border: 1px solid var(--cr-line);
+  border-radius: 999px;
+  background: transparent;
+  color: #bdbdbd;
+  font: 500 12px "Manrope", system-ui, sans-serif;
+  cursor: pointer;
+  transition: border-color 0.3s var(--ease-soft), color 0.3s var(--ease-soft), background 0.3s var(--ease-soft);
+}
+.cr-disciplines button:hover,
+.cr-disciplines button:focus-visible {
+  border-color: var(--cr-blue);
+  background: rgba(0, 89, 179, 0.15);
+  color: #fff;
+}
+
+/* ---------- 2. Practice domains (light) ---------- */
+.cr-domains,
+.cr-operate {
+  padding: clamp(80px, 12vh, 150px) var(--pad);
+  background: #fff;
+  color: var(--cr-ink);
+}
+.cr-domains {
+  background: #f2f3f5; /* light grey section, white cards on it */
+}
+.cr-domain-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(14px, 1.4vw, 22px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cr-domain {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: clamp(20px, 1.8vw, 28px);
+  border: 1px solid #e4e6ea;
+  border-radius: 16px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 0.5s var(--ease-out),
+    border-color 0.35s var(--ease-soft),
+    background 0.35s var(--ease-soft),
+    box-shadow 0.5s var(--ease-out);
+}
+.cr-domain__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #e1e4ea;
+  border-radius: 12px;
+  background: #f2f3f5;
+  color: var(--cr-blue);
+  font-size: 20px;
+  transition: background 0.35s var(--ease-soft), color 0.35s var(--ease-soft), border-color 0.35s var(--ease-soft);
+}
+.cr-domain__title {
+  margin-top: 26px;
+  font-size: clamp(16px, 1.15vw, 19px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.cr-domain__count {
+  margin: 6px 0 26px;
+  color: var(--cr-grey);
+  font-size: 13px;
+}
+.cr-domain__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid #e3e6eb;
+  font-size: 13px;
+  font-weight: 600;
+}
+.cr-domain__foot svg {
+  color: var(--cr-blue);
+  transition: transform 0.45s var(--ease-out);
+}
+.cr-domain:hover,
+.cr-domain:focus-visible {
+  transform: translateY(-4px);
+  border-color: rgba(0, 89, 179, 0.35);
+  background: #fff;
+  box-shadow: 0 22px 40px -28px rgba(0, 40, 90, 0.45);
+}
+.cr-domain:hover .cr-domain__icon,
+.cr-domain:focus-visible .cr-domain__icon {
+  border-color: var(--cr-blue);
+  background: var(--cr-blue);
+  color: #fff;
+}
+.cr-domain:hover .cr-domain__foot svg,
+.cr-domain:focus-visible .cr-domain__foot svg {
+  transform: translateX(4px);
+}
+
+/* ---------- 3. Open roles (dark) ---------- */
+.cr-roles {
+  padding: clamp(80px, 12vh, 150px) var(--pad);
+  background: var(--cr-black);
+  scroll-margin-top: calc(var(--nav-h) + 10px);
+}
+.cr-roles__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px 40px;
+  margin-bottom: clamp(30px, 4vw, 48px);
+}
+.cr-roles__head p:last-child {
+  margin: 14px 0 0;
+  color: #8a8a8a;
+  font-size: clamp(14px, 1vw, 16px);
+}
+.cr-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cr-tabs button {
+  padding: 9px 16px;
+  border: 1px solid var(--cr-line);
+  border-radius: 999px;
+  background: transparent;
+  color: #bdbdbd;
+  font: 500 13px "Manrope", system-ui, sans-serif;
+  cursor: pointer;
+  transition: background 0.3s var(--ease-soft), color 0.3s var(--ease-soft), border-color 0.3s var(--ease-soft);
+}
+.cr-tabs button:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+.cr-tabs button.is-on {
+  border-color: var(--cr-blue);
+  background: var(--cr-blue);
+  color: #fff;
+}
+.cr-role-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 1.4vw, 22px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cr-role {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(22px, 2vw, 32px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: #1c1d21; /* dark grey cards on the black section */
+  /* `backwards` (not `both`): once the entrance finishes it lets go of transform, so the hover can ease. */
+  animation: cr-in 0.6s var(--ease-out) backwards;
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.5s var(--ease-soft),
+    background-color 0.5s var(--ease-soft),
+    box-shadow 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+/* Hover: gentle lift, slightly lighter grey, soft blue edge and a deep shadow — all on one easing curve. */
+.cr-role:hover,
+.cr-role:focus-within {
+  transform: translateY(-6px);
+  border-color: rgba(0, 89, 179, 0.55);
+  background-color: #222328;
+  box-shadow: 0 28px 50px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(0, 89, 179, 0.12);
+}
+.cr-role h3 {
+  transition: color 0.5s var(--ease-soft);
+}
+.cr-role:hover h3 {
+  color: #fff;
+}
+.cr-role .cr-btn svg {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cr-role:hover .cr-btn svg {
+  transform: translateX(4px);
+}
+@keyframes cr-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+.cr-role__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.cr-role__tag {
+  padding: 5px 11px;
+  border: 1px solid rgba(0, 89, 179, 0.45);
+  border-radius: 999px;
+  color: var(--cr-blue-text);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.cr-role__posted {
+  color: #7a7a7a;
+  font-size: 12px;
+}
+.cr-role h3 {
+  margin-top: 20px;
+  font-size: clamp(19px, 1.5vw, 25px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+.cr-role__text {
+  margin: 12px 0 0;
+  color: #8f8f8f;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.cr-role__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin: 20px 0 26px;
+  color: #bdbdbd;
+  font-size: 13px;
+}
+.cr-role__meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.cr-role__meta svg {
+  color: var(--cr-blue-text);
+}
+.cr-role__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 22px;
+  border-top: 1px solid var(--cr-line);
+  font-size: 13px;
+  font-weight: 600;
+}
+.cr-empty {
+  padding: 50px 20px;
+  border: 1px dashed var(--cr-line);
+  border-radius: 16px;
+  color: #9a9a9a;
+  text-align: center;
+}
+.cr-empty p {
+  margin: 0 0 12px;
+}
+.cr-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--cr-blue-text);
+  font: 600 14px "Manrope", system-ui, sans-serif;
+  cursor: pointer;
+}
+.cr-roles__note {
+  margin: clamp(30px, 4vw, 48px) 0 0;
+  color: #6f6f6f;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ---------- 4. How we operate (light) ---------- */
+.cr-operate .cr-eyebrow {
+  color: var(--cr-blue);
+}
+.cr-operate__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 26px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cr-principle {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 2.4vw, 40px);
+  border: 1px solid #e6e8ec;
+  border-radius: 16px;
+  background: #f6f7f9;
+}
+.cr-principle__n {
+  color: rgba(0, 89, 179, 0.3);
+  font-size: clamp(30px, 2.6vw, 44px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+.cr-principle h3 {
+  margin-top: 18px;
+  font-size: clamp(18px, 1.4vw, 23px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.cr-principle p {
+  margin: 14px 0 0;
+  color: var(--cr-grey);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.cr-principle__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 24px;
+  color: #4a4a4a;
+  font-size: 12px;
+  font-weight: 600;
+}
+.cr-principle__tag::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cr-blue);
+}
+
+/* ---------- 5. Open application (dark) ---------- */
+.cr-open {
+  padding: clamp(70px, 11vh, 130px) var(--pad);
+  background: var(--cr-black);
+}
+.cr-open__card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px 50px;
+  padding: clamp(28px, 4vw, 60px);
+  border: 1px solid var(--cr-line);
+  border-radius: 22px;
+  background: var(--cr-card);
+}
+.cr-open__card > div:first-child {
+  max-width: 40em;
+}
+.cr-open h2 {
+  font-size: clamp(26px, 2.8vw, 46px);
+}
+.cr-open__card > div:first-child > p:last-child {
+  margin: 18px 0 0;
+  color: #8f8f8f;
+  font-size: clamp(14px, 1.05vw, 17px);
+  line-height: 1.6;
+}
+.cr-open__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.cr-copy {
+  min-height: 52px;
+  padding: 0 22px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font: 500 14px "Manrope", system-ui, sans-serif;
+  cursor: pointer;
+  transition: border-color 0.3s var(--ease-soft), background 0.3s var(--ease-soft);
+}
+.cr-copy:hover,
+.cr-copy:focus-visible {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .cr-domain-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cr-search {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .cr-field--grow {
+    grid-column: 1 / -1;
+  }
+  .cr-search .cr-btn {
+    grid-column: 1 / -1;
+    min-height: 50px;
+  }
+}
+@media (max-width: 800px) {
+  .cr-role-grid,
+  .cr-operate__grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 620px) {
+  .cr-hero {
+    align-items: flex-start;
+    min-height: 0;
+    text-align: left;
+  }
+  .cr-search,
+  .cr-domain-grid {
+    grid-template-columns: 1fr;
+  }
+  .cr-disciplines,
+  .cr-disciplines ul {
+    justify-content: flex-start;
+  }
+  .cr-tabs {
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .cr-tabs button {
+    flex: none;
+  }
+  .cr-role__foot {
+    flex-wrap: wrap;
+  }
+  .cr-open__actions,
+  .cr-open__actions > * {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .careers *,
+  .careers *::before {
+    animation: none !important;
+    transition: none !important;
+  }
+}

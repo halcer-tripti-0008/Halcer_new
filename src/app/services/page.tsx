@@ -65,7 +65,6 @@ export default function ServicesPage() {
         <section className="sv-domains" aria-labelledby="sv-domains-title">
           <header className="sv-domains__head reveal">
             <div>
-              <p className="sv-domains__eyebrow">{DOMAINS_HEAD.eyebrow}</p>
               <h2 id="sv-domains-title">
                 {DOMAINS_HEAD.title} <em>{DOMAINS_HEAD.accent}</em>
               </h2>
@@ -75,10 +74,6 @@ export default function ServicesPage() {
           <ul className="sv-domains__grid">
             {DOMAINS.map((d, i) => (
               <li key={d.n} className="sv-dom reveal" style={cssVars({ "--d": i % 3 })}>
-                <span className="sv-dom__n">{d.n}</span>
-                <span className="sv-dom__big" aria-hidden="true">
-                  {d.n}
-                </span>
                 <span className="sv-dom__plus" aria-hidden="true" />
                 <h3>{d.title}</h3>
                 <ul className="sv-dom__tags">

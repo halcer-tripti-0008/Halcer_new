@@ -18,6 +18,7 @@ export const FOOTER_HREFS: Record<string, string> = {
   "About us": "/about",
   Services: "/services",
   Insights: "/insights",
+  Career: "/careers",
   Projects: "/#work", // the "Our Projects" section on the home page
 };
 
@@ -28,5 +29,5 @@ export const NAV_HREFS: Record<(typeof NAV_LINKS)[number], string> = {
   About: "/about",
   Services: "/services",
   Insights: "/insights",
-  Careers: "#",
+  Careers: "/careers",
 };
